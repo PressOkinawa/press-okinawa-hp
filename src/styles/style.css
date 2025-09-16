@@ -19,6 +19,42 @@
   margin: 0 auto;
 }
 
+.company-profile {
+  background: #f5f9ff;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.company-profile h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #0d47a1;
+  border-bottom: 2px solid #42a5f5;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.profile-content p {
+  font-size: 1.05rem;
+  margin: 0.6rem 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+.profile-content a {
+  color: #0d47a1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.profile-content a:hover {
+  text-decoration: underline;
+}
+
 
 
 /* ブランド紹介セクション */
