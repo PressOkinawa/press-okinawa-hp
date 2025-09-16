@@ -113,6 +113,111 @@ import "../styles/style.css";
                 <h2>メニュー表作成例（毎時間変更します）</h2>
                 <img id="slideshow-6" class="responsive-img fade-up" />
             </section>
+
+            <section class="video-section">
+  <!-- サムネイルとして常に再生される動画 -->
+<section class="video-section">
+  <!-- 常時ループだが無音 -->
+  <video id="preview-video"
+         class="video-preview"
+         src="/images/biyousample.mp4"
+         autoplay
+         loop
+         muted
+         playsinline
+         preload="metadata">
+  </video>
+</section>
+
+<!-- モーダル（初期は非表示・無音・自動再生させない） -->
+<div id="video-modal" class="video-modal" style="display:none">
+  <span id="close-modal" class="close-btn">&times;</span>
+  <video id="full-video"
+         class="video-full"
+         src="/images/biyousample.mp4"
+         controls
+         muted
+         preload="metadata">
+  </video>
+</div>
+
+
+<style>
+.video-section {
+  text-align: center;
+  margin: 2rem 0;
+}
+.video-preview {
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* モーダル */
+.video-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+.video-full {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+.close-btn {
+  position: absolute;
+  top: 20px; right: 30px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+</style>
+
+<script>
+  const preview  = document.getElementById("preview-video")!;
+  const modal    = document.getElementById("video-modal")!;
+  const closeBtn = document.getElementById("close-modal")!;
+
+  function openModal() {
+    modal.style.display = "flex";
+    const fullVideo = modal.querySelector("video")!;
+    fullVideo.currentTime = 0;
+    fullVideo.play();
+  }
+
+  function closeModal() {
+    modal.style.display = "none";
+    const fullVideo = modal.querySelector("video")!;
+    fullVideo.pause();
+  }
+
+  preview.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
+</script>
+
+
+
+
+            <section class="hero-gif">
+  <img src="/images/3-1-1.gif" alt="プレス沖縄イメージ" class="responsive-gif" loading="lazy" />
+</section>
+
+
         </main>
 
         <a href="https://lin.ee/56a0xBp" target="_blank" class="fixed-button">
