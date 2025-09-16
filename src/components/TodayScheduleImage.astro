@@ -27,3 +27,33 @@
             setInterval(updateTopSlideshow, 10 * 60 * 1000);
 
             </script>
+
+                      <script>
+          const scheduleTop2 = [
+                { startHour: 4, image: "/images/top2.gif" },
+                { startHour: 9, image: "/images/top2.gif" },
+                { startHour: 14, image: "/images/top2.gif" },
+                { startHour: 21, image: "/images/top2.gif" },
+            ];
+
+
+            function getTopImageForTime() {
+                const now = new Date();
+                const hour = now.getHours();
+                for (let i = scheduleTop2.length - 1; i >= 0; i--) {
+                    if (hour >= scheduleTop2[i].startHour)
+                        return scheduleTop2[i].image;
+                }
+                return scheduleTop2[0].image;
+            }
+
+            function updateTopSlideshow() {
+                const topImage = document.getElementById("slideshow-top2");
+                // @ts-ignore
+                if (topImage) topImage.src = getTopImageForTime();
+            }
+
+            updateTopSlideshow();
+            setInterval(updateTopSlideshow, 10 * 60 * 1000);
+
+            </script>
