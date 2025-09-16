@@ -8,6 +8,71 @@
   font-family: "Yu Gothic UI", "Helvetica Neue", sans-serif;
 }
 
+
+
+/* ブランド紹介セクション */
+.brand-intro {
+  background: linear-gradient(135deg, #fdfdfd, #f1f7ff);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  border-bottom: 4px solid #0d47a1;
+}
+
+.brand-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.brand-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0d47a1;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.brand-intro h2 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #1a237e;
+  border-left: 5px solid #42a5f5;
+  padding-left: 10px;
+  display: inline-block;
+}
+
+.brand-intro p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1.2rem;
+}
+
+.brand-intro ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 1rem;
+}
+
+.brand-intro ul li {
+  font-size: 1.05rem;
+  padding: 0.4rem 0;
+  color: #444;
+}
+
+.service-list li {
+  background: #e3f2fd;
+  margin: 0.3rem 0;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.service-list li:hover {
+  background: #bbdefb;
+}
+
+
 html, body {
   width: 100%;
   overflow-x: hidden;
