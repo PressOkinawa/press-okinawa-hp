@@ -2,456 +2,171 @@
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
 import Narration from "../components/Narration.astro";
-
 import TodayScheduleImage from "../components/TodayScheduleImage.astro";
-
 import "../styles/style.css";
 ---
 
 <!doctype html>
 <html lang="ja">
-    <head>
-        <script src="https://js.ptengine.jp/55iy7etj.js"></script>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>プレス沖縄</title>
-        <link rel="stylesheet" href="main-style.css" />
-        <script src="https://js.ptengine.jp/554zwt96.js"></script>
-        <meta
-            name="description"
-            content="沖縄印刷"
-        />
-    </head>
+  <head>
+    <script src="https://js.ptengine.jp/55iy7etj.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>プレス沖縄</title>
+    <link rel="stylesheet" href="main-style.css" />
+    <script src="https://js.ptengine.jp/554zwt96.js"></script>
+    <meta name="description" content="沖縄印刷" />
+  </head>
 
-    <body>
-        <Header />
-        <main>
-            <section class="hero">
-                <img
-                    id="slideshow-top"
-                    alt="トップ画像"
-                    class="responsive-img"
-                />
-                <h2></h2>
-               
-            </section>
+  <body>
+    <Header />
+    <main>
+      <section class="hero">
+        <img id="slideshow-top" alt="トップ画像" class="responsive-img" />
+      </section>
 
-                        <section class="hero">
-                <img
-                    id="slideshow-top2"
-                    alt="トップ画像"
-                    class="responsive-img"
-                />
-                <h2></h2>
-               
-            </section>
+      <section class="hero">
+        <img id="slideshow-top2" alt="トップ画像" class="responsive-img" />
+      </section>
 
+      <section class="promo">
+        <div class="sns-buttons">
+          <a href="#">
+            <img src="/images/puresu5-1.jpg" alt="LINE予約1" class="fixed-size" />
+          </a>
+          <a href="mail:sunabe@kyi.biglobe.e.jp">
+            <img src="/images/puresu5-2.jpg" alt="メール" class="fixed-size" />
+          </a>
+          <a href="tel:090-1491-1515">
+            <img src="/images/puresu5-3.jpg" alt="電話" class="fixed-size" />
+          </a>
+        </div>
+      </section>
 
-            <section class="promo">
-                <div class="sns-buttons">
-                    <a href="#"
-                        ><img
-                            src="/images/puresu5-1.jpg"
-                            alt="LINE予約1"
-                            class="fixed-size"
-                        /></a
-                    >
-                    <a href="mail:sunabe@kyi.biglobe.e.jp"
-                        ><img
-                            src="/images/puresu5-2.jpg"
-                            alt="LINE予約2"
-                            class="fixed-size"
-                        /></a
-                    >
-                    <a href="tel:090-1491-1515"
-                        ><img
-                            src="/images/puresu5-3.jpg"
-                            alt="電話"
-                            class="fixed-size"
-                        /></a
-                    >
-                </div>
-            </section>
+      <section class="slides">
+        <h2>名刺作成例（毎時間変更します）</h2>
+        <img id="slideshow-1" class="responsive-img fade-up" />
 
-            <section class="slides">
-                <h2>名刺作成例（毎時間変更します）</h2>
-                <img src="images/mor-5.gif" class="responsive-img fade-up" />
+        <h2>チラシ作成例（毎時間変更します）</h2>
+        <img id="slideshow-2" class="responsive-img fade-up" />
 
-                <h2>
-                  チラシ作成例（毎時間変更します）
-                </h2>
-                <img
-                    src="images/kami27.gif"
-                    class="responsive-img fade-up"
-                    alt=""
-                />
+        <h2>ポスター作成例（毎時間変更します）</h2>
+        <img id="slideshow-3" class="responsive-img fade-up" />
 
-                <h2>クーポン券作成例（毎時間変更します）</h2>
-                <img
-                    id="slideshow-1"
-                    class="responsive-img fade-up"
-                    alt="野菜スライド"
-                />
+        <h2>封筒・袋作成例（毎時間変更します）</h2>
+        <img id="slideshow-4" class="responsive-img fade-up" />
 
-                <h2>ポスター作成例（毎時間変更します）</h2>
-                <img
-                    id="slideshow-2"
-                    class="responsive-img fade-up"
-                    alt="果物スライド"
-                />
+        <h2>メニュー表作成例（毎時間変更します）</h2>
+        <img id="slideshow-5" class="responsive-img fade-up" />
 
-                <h2>封筒・袋作成例（毎時間変更します）</h2>
-                <img
-                    id="slideshow-3"
-                    class="responsive-img fade-up"
-                    alt="レシピ"
-                />
+        <h2>コマーシャル・映画作成例（毎時間変更します）</h2>
+        <img id="slideshow-6" class="responsive-img fade-up" />
 
-                <h2>メニュー表作成例（毎時間変更します）</h2>
-                <img
-                    id="slideshow-4"
-                    class="responsive-img fade-up"
-                    alt="糖尿病"
-                />
+      </section>
 
-                <h2>コマーシャル・映画作成例（毎時間変更します）</h2>
-                <img
-                    id="slideshow-5"
-                    class="responsive-img fade-up"
+    </main>
 
-                />
+    <a href="https://lin.ee/56a0xBp" target="_blank" class="fixed-button">
+      LINEで予約する
+    </a>
 
+    <Footer />
+    <TodayScheduleImage />
+
+    <!-- ===== JS部分 ===== -->
+    <script type="module">
+      // ===== スケジュール配列 =====
+      const schedule1 = [
+        { startHour: 0, image: "/images/1mei.jpg" },
+        { startHour: 1, image: "/images/2mei.jpg" },
+        { startHour: 2, image: "/images/3mei.jpg" },
+        { startHour: 3, image: "/images/4mei.jpg" },
+      ];
+
+      const schedule2 = [
+        { startHour: 0, image: "/images/tira1.jpg" },
+        { startHour: 1, image: "/images/tira2.jpg" },
+        { startHour: 2, image: "/images/tira3.jpg" },
+        { startHour: 3, image: "/images/tira4.jpg" },
+        { startHour: 4, image: "/images/tira5.jpg" },
+        { startHour: 5, image: "/images/tira6.jpg" },
+        { startHour: 6, image: "/images/tira7.jpg" },
+        { startHour: 7, image: "/images/tira8.jpg" },
+      ];
+
+      const schedule3 = [
+        { startHour: 0, image: "/images/kuu1.jpg" },
+      ];
+
+      const schedule4 = [
+        { startHour: 0, image: "/images/pos1.jpg" },
+        { startHour: 1, image: "/images/pos2.jpg" },
+        { startHour: 2, image: "/images/pos3.jpg" },
+        { startHour: 3, image: "/images/pos4.jpg" },
+        { startHour: 4, image: "/images/pos5.jpg" },
+        { startHour: 5, image: "/images/pos6.jpg" },
+        { startHour: 6, image: "/images/pos7.jpg" },
+      ];
+
+      const schedule5 = [
+        { startHour: 0, image: "/images/fuu1.jpg" },
+      ];
+
+      const schedule6 = [
+        { startHour: 0, image: "/images/menu1.jpg" },
+        { startHour: 1, image: "/images/menu2.jpg" },
+        { startHour: 2, image: "/images/menu3.jpg" },
+      ];
 
 
-                <!--ここから下に7~8 を追加 -->
 
-                                <h2>高脂血症特集<br />毎時間更新します</h2>
-                <img
-                    id="slideshow-7"
-                    class="responsive-img fade-up"
-                    
-                />
+      /**
+       * 指定したスケジュールから現在時刻に合う画像を返す
+       * @param {{startHour:number,image:string}[]} schedule
+       * @returns {string}
+       */
+      function getImageForSchedule(schedule) {
+        const hour = new Date().getHours();
+        return schedule[hour % schedule.length].image;
+      }
 
-                                <h2>糖尿病特集<br />毎時間更新します0</h2>
-                <img
-                    id="slideshow-8"
-                    class="responsive-img fade-up"
- 
-                />
+      // ID と schedule の紐付け
+      const slideshowIds = [
+        ["slideshow-1", schedule1],
+        ["slideshow-2", schedule2],
+        ["slideshow-3", schedule3],
+        ["slideshow-4", schedule4],
+        ["slideshow-5", schedule5],
+        ["slideshow-6", schedule6],
 
+      ];
 
-            </section>
+      function updateAllSlideshows() {
+        slideshowIds.forEach(([id, schedule]) => {
+          const el = document.getElementById(id);
+          if (el) el.src = getImageForSchedule(schedule);
+        });
+      }
 
-            <section class="calendar">
-                <img src="/images/8gatu1.jpg" class="responsive-img" />
-                <img src="/images/kugatu.jpg" class="responsive-img" />
-            </section>
+      // 初期表示 & 10分ごとに更新
+      updateAllSlideshows();
+      setInterval(updateAllSlideshows, 10 * 60 * 1000);
+    </script>
 
-        </main>
-
-        <a href="https://lin.ee/56a0xBp" target="_blank" class="fixed-button"
-            >LINEで予約する</a
-        >
-
-        <Footer />
-
-        <TodayScheduleImage />
-        <script>
-            const scheduleInfo = [
-                { startHour: 0, image: "/images/atti90.jpg" },
-                { startHour: 1, image: "/images/atti89.jpg" },
-                { startHour: 2, image: "/images/atti88.jpg" },
-                { startHour: 3, image: "/images/atti87.jpg" },
-                { startHour: 4, image: "/images/atti86.jpg" },
-                { startHour: 5, image: "/images/atti1.jpg" },
-                { startHour: 6, image: "/images/atti90.jpg" },
-                { startHour: 7, image: "/images/atti89.jpg" },
-                { startHour: 8, image: "/images/atti88.jpg" },
-                { startHour: 9, image: "/images/atti87.jpg" },
-                { startHour: 10, image: "/images/atti86.jpg" },
-                { startHour: 12, image: "/images/atti1.jpg" },
-                { startHour: 13, image: "/images/atti90.jpg" },
-                { startHour: 14, image: "/images/atti89.jpg" },
-                { startHour: 15, image: "/images/atti87.jpg" },
-                { startHour: 16, image: "/images/atti88.jpg" },
-                { startHour: 17, image: "/images/atti1.jpg" },
-                { startHour: 18, image: "/images/atti86.jpg" },
-                { startHour: 19, image: "/images/atti87.jpg" },
-                { startHour: 20, image: "/images/atti88.jpg" },
-                { startHour: 21, image: "/images/atti89.jpg" },
-                { startHour: 22, image: "/images/atti90.jpg" },
-                { startHour: 23, image: "/images/atti1.jpg" },
-            ];
-
-            const schedule1 = [
-                { startHour: 0, image: "/images/ketuatu1s.jpg" },
-                { startHour: 1, image: "/images/ketuatu2s.jpg" },
-                { startHour: 2, image: "/images/ketuatu3s.jpg" },
-                { startHour: 3, image: "/images/ketuatu4s.jpg" },
-                { startHour: 4, image: "/images/ketuatu5s.jpg" },
-                { startHour: 5, image: "/images/ketuatu6s.jpg" },
-                { startHour: 6, image: "/images/ketuatu7s.jpg" },
-                { startHour: 7, image: "/images/ketuatu8s.jpg" },
-                { startHour: 8, image: "/images/ketuatu9s.jpg" },
-                { startHour: 9, image: "/images/ketuatu10s.jpg" },
-                { startHour: 10, image: "/images/ketuatu11s.jpg" },
-                { startHour: 11, image: "/images/ketuatu12s.jpg" },
-                { startHour: 12, image: "/images/ketuatu1s.jpg" },
-                { startHour: 13, image: "/images/ketuatu2s.jpg" },
-                { startHour: 14, image: "/images/ketuatu3s.jpg" },
-                { startHour: 15, image: "/images/ketuatu4s.jpg" },
-                { startHour: 16, image: "/images/ketuatu5s.jpg" },
-                { startHour: 17, image: "/images/ketuatu6s.jpg" },
-                { startHour: 18, image: "/images/ketuatu7s.jpg" },
-                { startHour: 19, image: "/images/ketuatu8s.jpg" },
-                { startHour: 20, image: "/images/ketuatu9s.jpg" },
-                { startHour: 21, image: "/images/ketuatu10s.jpg" },
-                { startHour: 22, image: "/images/ketuatu11s.jpg" },
-                { startHour: 23, image: "/images/ketuatu12s.jpg" },
-            ];
-
-            const schedule2 = [
-                { startHour: 0, image: "/images/hirou1.jpg" },
-                { startHour: 1, image: "/images/hirou2.jpg" },
-                { startHour: 2, image: "/images/hirou3.jpg" },
-                { startHour: 3, image: "/images/hirou1.jpg" },
-                { startHour: 4, image: "/images/hirou2.jpg" },
-                { startHour: 5, image: "/images/hirou3.jpg" },
-                { startHour: 6, image: "/images/hirou1.jpg" },
-                { startHour: 7, image: "/images/hirou2.jpg" },
-                { startHour: 8, image: "/images/hirou3.jpg" },
-                { startHour: 9, image: "/images/hirou1.jpg" },
-                { startHour: 10, image: "/images/hirou2.jpg" },
-                { startHour: 11, image: "/images/hirou3.jpg" },
-                { startHour: 12, image: "/images/hirou1.jpg" },
-                { startHour: 13, image: "/images/hirou2.jpg" },
-                { startHour: 14, image: "/images/hirou3.jpg" },
-                { startHour: 15, image: "/images/hirou1.jpg" },
-                { startHour: 16, image: "/images/hirou2.jpg" },
-                { startHour: 17, image: "/images/hirou3.jpg" },
-                { startHour: 18, image: "/images/hirou1.jpg" },
-                { startHour: 19, image: "/images/hirou2.jpg" },
-                { startHour: 20, image: "/images/hirou3.jpg" },
-                { startHour: 21, image: "/images/hirou1.jpg" },
-                { startHour: 22, image: "/images/hirou2.jpg" },
-                { startHour: 23, image: "/images/hirou3.jpg" },
-            ];
-
-            const schedule3 = [
-                { startHour: 0, image: "/images/kounen1.jpg" },
-                { startHour: 1, image: "/images/kounen2.jpg" },
-                { startHour: 2, image: "/images/kounen3.jpg" },
-                { startHour: 3, image: "/images/kounen4.jpg" },
-                { startHour: 4, image: "/images/kounen5.jpg" },
-                { startHour: 5, image: "/images/kounen6.jpg" },
-                { startHour: 6, image: "/images/kounen7.jpg" },
-                { startHour: 7, image: "/images/kounen8.jpg" },
-                { startHour: 8, image: "/images/kounen1.jpg" },
-                { startHour: 9, image: "/images/kounen2.jpg" },
-                { startHour: 10, image: "/images/kounen3.jpg" },
-                { startHour: 11, image: "/images/kounen4.jpg" },
-                { startHour: 12, image: "/images/kounen5.jpg" },
-                { startHour: 13, image: "/images/kounen6.jpg" },
-                { startHour: 14, image: "/images/kounen7.jpg" },
-                { startHour: 15, image: "/images/kounen8.jpg" },
-                { startHour: 16, image: "/images/kounen1.jpg" },
-                { startHour: 17, image: "/images/kounen2.jpg" },
-                { startHour: 18, image: "/images/kounen3.jpg" },
-                { startHour: 19, image: "/images/kounen4.jpg" },
-                { startHour: 20, image: "/images/kounen5.jpg" },
-                { startHour: 21, image: "/images/kounen6.jpg" },
-                { startHour: 22, image: "/images/kounen7.jpg" },
-                { startHour: 23, image: "/images/kounen8.jpg" },
-                { startHour: 24, image: "/images/kounen1.jpg" },
-            ];
-
-            const schedule4 = [
-                { startHour: 0, image: "/images/simi1.jpg" },
-                { startHour: 1, image: "/images/simi2.jpg" },
-                { startHour: 2, image: "/images/simi3.jpg" },
-                { startHour: 3, image: "/images/simi4.jpg" },
-                { startHour: 4, image: "/images/simi5.jpg" },
-                { startHour: 5, image: "/images/simi6.jpg" },
-                { startHour: 6, image: "/images/simi7.jpg" },
-                { startHour: 7, image: "/images/simi8.jpg" },
-                { startHour: 8, image: "/images/simi9.jpg" },
-                { startHour: 9, image: "/images/simi10.jpg" },
-                { startHour: 10, image: "/images/simi11.jpg" },
-                { startHour: 11, image: "/images/simi12.jpg" },
-                { startHour: 12, image: "/images/simi1.jpg" },
-                { startHour: 13, image: "/images/simi2.jpg" },
-                { startHour: 14, image: "/images/simi3.jpg" },
-                { startHour: 15, image: "/images/simi4.jpg" },
-                { startHour: 16, image: "/images/simi5.jpg" },
-                { startHour: 17, image: "/images/simi6.jpg" },
-                { startHour: 18, image: "/images/simi7.jpg" },
-                { startHour: 19, image: "/images/simi8.jpg" },
-                { startHour: 20, image: "/images/simi9.jpg" },
-                { startHour: 21, image: "/images/simi10.jpg" },
-                { startHour: 22, image: "/images/simi11.jpg" },
-                { startHour: 23, image: "/images/simi12.jpg" },
-                { startHour: 24, image: "/images/simi1.jpg" },
-            ];
-
-            const schedule5 = [
-                { startHour: 0, image: "/images/niki1.jpg" },
-                { startHour: 1, image: "/images/niki2.jpg" },
-                { startHour: 2, image: "/images/niki3.jpg" },
-                { startHour: 3, image: "/images/niki4.jpg" },
-                { startHour: 4, image: "/images/niki5.jpg" },
-                { startHour: 5, image: "/images/niki6.jpg" },
-                { startHour: 6, image: "/images/niki7.jpg" },
-                { startHour: 7, image: "/images/niki8.jpg" },
-                { startHour: 8, image: "/images/niki9.jpg" },
-                { startHour: 9, image: "/images/niki10.jpg" },
-                { startHour: 10, image: "/images/niki11.jpg" },
-                { startHour: 11, image: "/images/niki12.jpg" },
-                { startHour: 12, image: "/images/niki1.jpg" },
-                { startHour: 13, image: "/images/niki2.jpg" },
-                { startHour: 14, image: "/images/niki3.jpg" },
-                { startHour: 15, image: "/images/niki4.jpg" },
-                { startHour: 16, image: "/images/niki5.jpg" },
-                { startHour: 17, image: "/images/niki6.jpg" },
-                { startHour: 18, image: "/images/niki7.jpg" },
-                { startHour: 19, image: "/images/niki8.jpg" },
-                { startHour: 20, image: "/images/niki9.jpg" },
-                { startHour: 21, image: "/images/niki10.jpg" },
-                { startHour: 22, image: "/images/niki11.jpg" },
-                { startHour: 23, image: "/images/niki12.jpg" },
-            ];
-
-            const schedule6 = [
-                { startHour: 0, image: "/images/diet1s.jpg" },
-                { startHour: 1, image: "/images/diet2s.jpg" },
-                { startHour: 2, image: "/images/diet3s.jpg" },
-                { startHour: 3, image: "/images/diet4s.jpg" },
-                { startHour: 4, image: "/images/diet5s.jpg" },
-                { startHour: 5, image: "/images/diet6s.jpg" },
-                { startHour: 6, image: "/images/diet7s.jpg" },
-                { startHour: 7, image: "/images/diet8s.jpg" },
-                { startHour: 8, image: "/images/diet9s.jpg" },
-                { startHour: 9, image: "/images/diet10s.jpg" },
-                { startHour: 10, image: "/images/diet11s.jpg" },
-                { startHour: 11, image: "/images/diet12s.jpg" },
-                { startHour: 12, image: "/images/diet1s.jpg" },
-                { startHour: 13, image: "/images/diet2s.jpg" },
-                { startHour: 14, image: "/images/diet3s.jpg" },
-                { startHour: 15, image: "/images/diet4s.jpg" },
-                { startHour: 16, image: "/images/diet5s.jpg" },
-                { startHour: 17, image: "/images/diet6s.jpg" },
-                { startHour: 18, image: "/images/diet7s.jpg" },
-                { startHour: 19, image: "/images/diet8s.jpg" },
-                { startHour: 20, image: "/images/diet9s.jpg" },
-                { startHour: 21, image: "/images/diet10s.jpg" },
-                { startHour: 22, image: "/images/diet11s.jpg" },
-                { startHour: 23, image: "/images/diet12s.jpg" },
-            ];
-
-            const schedule7 = [
-                { startHour: 0, image: "/images/lip1s.jpg" },
-                { startHour: 1, image: "/images/lip2s.jpg" },
-                { startHour: 2, image: "/images/lip3s.jpg" },
-                { startHour: 3, image: "/images/lip4s.jpg" },
-                { startHour: 4, image: "/images/lip5s.jpg" },
-                { startHour: 5, image: "/images/lip6s.jpg" },
-                { startHour: 6, image: "/images/lip7s.jpg" },
-                { startHour: 7, image: "/images/lip8s.jpg" },
-                { startHour: 8, image: "/images/lip9s.jpg" },
-                { startHour: 9, image: "/images/lip10s.jpg" },
-                { startHour: 10, image: "/images/lip11s.jpg" },
-                { startHour: 11, image: "/images/lip12s.jpg" },
-                { startHour: 12, image: "/images/lip1s.jpg" },
-                { startHour: 13, image: "/images/lip2s.jpg" },
-                { startHour: 14, image: "/images/lip3s.jpg" },
-                { startHour: 15, image: "/images/lip4s.jpg" },
-                { startHour: 16, image: "/images/lip5s.jpg" },
-                { startHour: 17, image: "/images/lip6s.jpg" },
-                { startHour: 18, image: "/images/lip7s.jpg" },
-                { startHour: 19, image: "/images/lip8s.jpg" },
-                { startHour: 20, image: "/images/lip9s.jpg" },
-                { startHour: 21, image: "/images/lip10s.jpg" },
-                { startHour: 22, image: "/images/lip11s.jpg" },
-                { startHour: 23, image: "/images/lip12s.jpg" },
-            ];
-
-            const schedule8 = [
-                { startHour: 0, image: "/images/dm1s.jpg" },
-                { startHour: 1, image: "/images/dm2s.jpg" },
-                { startHour: 2, image: "/images/dm3s.jpg" },
-                { startHour: 3, image: "/images/dm4s.jpg" },
-                { startHour: 4, image: "/images/dm5s.jpg" },
-                { startHour: 5, image: "/images/dm6s.jpg" },
-                { startHour: 6, image: "/images/dm7s.jpg" },
-                { startHour: 7, image: "/images/dm8s.jpg" },
-                { startHour: 8, image: "/images/dm9s.jpg" },
-                { startHour: 9, image: "/images/dm10s.jpg" },
-                { startHour: 10, image: "/images/dm11s.jpg" },
-                { startHour: 11, image: "/images/dm12s.jpg" },
-                { startHour: 12, image: "/images/dm1s.jpg" },
-                { startHour: 13, image: "/images/dm2s.jpg" },
-                { startHour: 14, image: "/images/dm3s.jpg" },
-                { startHour: 15, image: "/images/dm4s.jpg" },
-                { startHour: 16, image: "/images/dm5s.jpg" },
-                { startHour: 17, image: "/images/dm6s.jpg" },
-                { startHour: 18, image: "/images/dm7s.jpg" },
-                { startHour: 19, image: "/images/dm8s.jpg" },
-                { startHour: 20, image: "/images/dm9s.jpg" },
-                { startHour: 21, image: "/images/dm10s.jpg" },
-                { startHour: 22, image: "/images/dm11s.jpg" },
-                { startHour: 23, image: "/images/dm12s.jpg" },
-                { startHour: 24, image: "/images/dm1s.jpg" },
-            ];
-            // @ts-ignore
-            function getImageForSchedule(schedule) {
-                const now = new Date();
-                const hour = now.getHours();
-                for (let i = schedule.length - 1; i >= 0; i--) {
-                    if (hour >= schedule[i].startHour) return schedule[i].image;
-                }
-                return schedule[schedule.length - 1].image;
+    <!-- フェードアニメーション -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
             }
-            const slideshowIds = [
-                ["slideshow-info", scheduleInfo],
-                ["slideshow-1", schedule1],
-                ["slideshow-2", schedule2],
-                ["slideshow-3", schedule3],
-                ["slideshow-4", schedule4],
-                ["slideshow-5", schedule5],
-                ["slideshow-6", schedule6],
-                ["slideshow-7", schedule7],
-                ["slideshow-8", schedule8],
-            ];
-
-            function updateAllSlideshows() {
-                slideshowIds.forEach(([id, schedule]) => {
-                    // @ts-ignore
-                    const element = document.getElementById(id);
-                    // @ts-ignore
-                    if (element) element.src = getImageForSchedule(schedule);
-                });
-            }
-
-            // 初期表示
-            updateAllSlideshows();
-
-            // 必要に応じて、定期更新も可能
-            setInterval(updateAllSlideshows, 10 * 60 * 1000); // 10分ごとに更新
-        </script>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("show");
-                        }
-                    });
-                });
-
-                document
-                    .querySelectorAll(".fade-up")
-                    .forEach((el) => observer.observe(el));
-            });
-        </script>
-    </body>
+          });
+        });
+        document
+          .querySelectorAll(".fade-up")
+          .forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
 </html>
