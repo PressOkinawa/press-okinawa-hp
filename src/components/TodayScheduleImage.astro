@@ -1,0 +1,29 @@
+          <script>
+          const scheduleTop = [
+                { startHour: 4, image: "/images/heizitu26.gif" },
+                { startHour: 9, image: "/images/heizitu26.gif" },
+                { startHour: 14, image: "/images/mor-7.gif" },
+                { startHour: 21, image: "/images/mor-5.gif" },
+            ];
+
+
+            function getTopImageForTime() {
+                const now = new Date();
+                const hour = now.getHours();
+                for (let i = scheduleTop.length - 1; i >= 0; i--) {
+                    if (hour >= scheduleTop[i].startHour)
+                        return scheduleTop[i].image;
+                }
+                return scheduleTop[0].image;
+            }
+
+            function updateTopSlideshow() {
+                const topImage = document.getElementById("slideshow-top");
+                // @ts-ignore
+                if (topImage) topImage.src = getTopImageForTime();
+            }
+
+            updateTopSlideshow();
+            setInterval(updateTopSlideshow, 10 * 60 * 1000);
+
+            </script>
