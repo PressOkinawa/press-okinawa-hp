@@ -197,46 +197,51 @@ import "../styles/style.css";
 </style>
 
 <script>
-  // 元要素の取得
-  const _preview   = document.getElementById("preview-video");
-  const _modal     = document.getElementById("video-modal");
-  const _closeBtn  = document.getElementById("close-modal");
-  const _fullVideo = document.getElementById("full-video");
+    const preview   = document.getElementById("preview-video");
+    const modal     = document.getElementById("video-modal");
+    const closeBtn  = document.getElementById("close-modal");
+    const fullVideo = document.getElementById("full-video") as HTMLVideoElement | null;
 
-  // どれか無ければ安全に終了（以降は実行しない）
-  if (
-    !(_preview instanceof HTMLVideoElement) ||
-    !(_modal instanceof HTMLElement) ||
-    !(_closeBtn instanceof HTMLElement) ||
-    !(_fullVideo instanceof HTMLVideoElement)
-  ) {
+    if (
+        preview instanceof HTMLVideoElement &&
+        modal   instanceof HTMLElement &&
+        closeBtn instanceof HTMLElement &&
+        fullVideo instanceof HTMLVideoElement
+    ) {
+            function openModal() {
+                if (modal) {
+                    modal.style.display = "flex";
+                }
+                if (fullVideo) {
+                    (fullVideo as HTMLVideoElement).currentTime = 0;
+                    (fullVideo as HTMLVideoElement).muted = false;   // クリックで音ON
+                    (fullVideo as HTMLVideoElement).play().catch(() => {});
+                }
+            }
+
+            function closeModal() {
+                if (modal) {
+                    modal.style.display = "none";
+                }
+                if (fullVideo) {
+                    (fullVideo as HTMLVideoElement).pause();
+                    (fullVideo as HTMLVideoElement).muted = true;    // 次回のために音OFF
+                }
+            }
+
+        preview.addEventListener("click", openModal);
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  } else {
     console.warn("video要素が不足しているためスクリプトは実行されませんでした。");
-    return;
   }
-
-  /** @type {HTMLVideoElement} */ const preview   = _preview;
-  /** @type {HTMLElement}      */ const modal     = _modal;
-  /** @type {HTMLElement}      */ const closeBtn  = _closeBtn;
-  /** @type {HTMLVideoElement} */ const fullVideo = _fullVideo;
-
-  function openModal() {
-    modal.style.display = "flex";
-    fullVideo.currentTime = 0;
-    fullVideo.muted = false;          // クリックで音ON
-    fullVideo.play().catch(() => {});
-  }
-
-  function closeModal() {
-    modal.style.display = "none";
-    fullVideo.pause();
-    fullVideo.muted = true;           // 次回のため音OFF
-  }
-
-  preview.addEventListener("click", openModal);
-  closeBtn.addEventListener("click", closeModal);
-  modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 </script>
+
 
 
 
