@@ -1,0 +1,448 @@
+---
+import Header from "../../components/header.astro";
+import Footer from "../../components/footer.astro";
+import Narration from "../../components/Narration.astro";
+import TodayScheduleImage from "../../components/TodayScheduleImage.astro";
+import "../../styles/style.css";
+---
+
+<!doctype html>
+<html lang="ja">
+    <head>
+        <script src="https://js.ptengine.jp/55iy7etj.js"></script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>プレス沖縄｜名刺</title>
+        <link rel="stylesheet" href="main-style.css" />
+        <meta
+            name="description"
+            content="沖縄印刷,名刺,めいし,北谷,ポスター,コマーシャル,プレス沖縄,印刷,砂辺"
+        />
+    </head>
+
+    <body>
+        <Header />
+        <main>
+            <!-- ブランドメッセージ -->
+            <section class="brand-message">
+                <div class="bm-inner">
+                    <h2 class="bm-title">Our Philosophy</h2>
+                    <p>
+                        私たちが大切にしているのは、<span>ホームページ</span
+                        >と<span>名刺</span>。
+                    </p>
+                    <p>新たなお客様とのご縁をつなぐのは、この二つです。</p>
+                    <p>SNS―LINEやInstagram―は交流の場にすぎません。</p>
+                    <p><span>名刺</span>は、企業の理念と品格を伝える「顔」。</p>
+                    <p>
+                        だからこそ、すべて手作業。<br
+                        />一枚一枚に魂を込め、テンプレートは使いません。
+                    </p>
+                    <p>
+                        お客様を真に大切にするために。<br />私たちは常に、<span
+                            >世界最高の完成度</span
+                        >を目指しています。
+                    </p>
+                </div>
+            </section>
+
+            <style>
+                .brand-message {
+                    max-width: 900px;
+                    margin: 4rem auto;
+                    padding: 0 1rem;
+                }
+
+                .bm-inner {
+                    background: #fff;
+                    padding: 3rem 2.5rem;
+                    border-radius: 20px;
+                    position: relative;
+                    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+                    overflow: hidden;
+                }
+
+                /* 左上にアクセントライン */
+                .bm-inner::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 6px;
+                    height: 100%;
+                    background: linear-gradient(180deg, #0077ff, #00d4ff);
+                }
+
+                .bm-title {
+                    font-size: 1.6rem;
+                    font-weight: 700;
+                    margin-bottom: 2rem;
+                    color: #0077ff;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                }
+
+                .brand-message p {
+                    margin: 0 0 1.3rem;
+                    font-size: 1.1rem;
+                    line-height: 1.9;
+                    color: #333;
+                }
+
+                .brand-message p span {
+                    font-weight: 700;
+                    color: #0077ff;
+                }
+
+                @media (max-width: 600px) {
+                    .bm-inner {
+                        padding: 2rem 1.2rem;
+                    }
+                    .brand-message p {
+                        font-size: 1rem;
+                        line-height: 1.8;
+                    }
+                    .bm-title {
+                        font-size: 1.3rem;
+                        margin-bottom: 1.5rem;
+                    }
+                }
+            </style>
+
+            <section class="slides">
+                <h2>名刺作成例（毎時間変更します）</h2>
+                <img id="slideshow-1" class="responsive-img fade-up" />
+            </section>
+
+            <section class="business-card">
+  <div class="bc-inner">
+    <h2 class="bc-title">✦ 名刺制作について ✦</h2>
+    <p>
+      私たちが制作する名刺は、すべてカラー・両面印刷。<br>
+      そして、すべての工程を手作業で丁寧に仕上げています。<br>
+      量産やテンプレートは使いません。<br>
+      世界にただ一つだけの名刺にこだわっています。<br>
+      そのため、料金はすべて一律・明朗会計です。
+    </p>
+
+    <h3 class="bc-subtitle">◆ 料金表</h3>
+    <ul class="bc-price-list">
+      <li>初期デザイン料：<strong>8,000円</strong><br>
+        <small>（オリジナルデザイン1案／修正対応込み）</small>
+      </li>
+    </ul>
+
+    <table class="bc-table">
+      <thead>
+        <tr>
+          <th>枚数</th>
+          <th>金額</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>20枚</td><td>1,000円</td></tr>
+        <tr><td>50枚</td><td>2,500円</td></tr>
+        <tr><td>70枚</td><td>3,500円</td></tr>
+        <tr><td>100枚</td><td>5,000円</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="bc-subtitle">◆ お支払い方法</h3>
+    <ul class="bc-payment">
+      <li>基本は代金引換（代引き）でのご対応となります。</li>
+      <li>郵送をご希望の場合は、銀行振込確認後の発送となります。</li>
+    </ul>
+
+    <p class="bc-footer">
+      ご不明点があれば、お気軽にお問い合わせください。<br>
+      一枚の名刺から、新たなご縁が広がることを願っております。
+    </p>
+  </div>
+</section>
+
+            <section class="slides">
+
+                <img id="slideshow-2" class="responsive-img fade-up" />
+
+<style>
+  .business-card {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+  }
+  .bc-inner {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+    border-left: 6px solid #0077ff;
+  }
+  .bc-title {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    color: #0077ff;
+  }
+  .bc-subtitle {
+    font-size: 1.2rem;
+    margin: 2rem 0 1rem;
+    color: #444;
+    border-bottom: 2px solid #0077ff20;
+    display: inline-block;
+    padding-bottom: .3rem;
+  }
+  .bc-inner p {
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  .bc-price-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+  }
+  .bc-price-list li {
+    margin-bottom: .5rem;
+    font-size: 1.05rem;
+  }
+  .bc-price-list small {
+    color: #666;
+  }
+  .bc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+  .bc-table th,
+  .bc-table td {
+    border: 1px solid #ddd;
+    padding: .7rem 1rem;
+    text-align: center;
+  }
+  .bc-table th {
+    background: #f0f6ff;
+    color: #0077ff;
+  }
+  .bc-payment {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .bc-footer {
+    font-style: italic;
+    color: #0077ff;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  @media(max-width: 600px) {
+    .bc-inner { padding: 1.8rem 1rem; }
+    .bc-title { font-size: 1.3rem; }
+    .bc-subtitle { font-size: 1.1rem; }
+    .bc-table th, .bc-table td { font-size: .95rem; }
+  }
+</style>
+
+
+            <section class="hero">
+                <img
+                    id="slideshow-top2"
+                    alt="トップ画像"
+                    class="responsive-img"
+                />
+            </section>
+
+            <section class="promo">
+                <div class="sns-buttons">
+                    <a href="#">
+                        <img
+                            src="/images/puresu5-1.jpg"
+                            alt="LINE予約1"
+                            class="fixed-size"
+                        />
+                    </a>
+                    <a href="mail:sunabe@kyi.biglobe.e.jp">
+                        <img
+                            src="/images/puresu5-2.jpg"
+                            alt="メール"
+                            class="fixed-size"
+                        />
+                    </a>
+                    <a href="tel:090-1491-1515">
+                        <img
+                            src="/images/puresu5-3.jpg"
+                            alt="電話"
+                            class="fixed-size"
+                        />
+                    </a>
+                </div>
+            </section>
+
+<section class="narration">
+    <img
+        src="/images/akaikutuk.jpg" style="
+        width: 90%;
+        max-width: 600px;
+        height: auto;
+        display: block;
+        margin: 0 auto 20px auto;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    "
+    />
+
+    <audio
+        controls
+        style="width: 90%; max-width: 600px; display: block; margin: 0 auto;"
+    >
+        <source src="/images/akaikutua.mp3" type="audio/mp3" />
+        お使いのブラウザは audio タグに対応していません。
+    </audio>
+</section>
+
+
+            <style>
+                .video-wrapper {
+                    position: relative;
+                    padding-bottom: 56.25%; /* アスペクト比 16:9 */
+                    height: 0;
+                    overflow: hidden;
+                    max-width: 100%;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                }
+
+                .video-wrapper iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: 0;
+                }
+            </style>
+
+            <section class="image-sample">
+                <img src="/images/aft-9.gif" class="responsive-img" />
+            </section>
+
+            <style>
+                .image-sample {
+                    text-align: center;
+                    margin: 2rem 0;
+                }
+                .responsive-img {
+                    max-width: 100%;
+                    height: auto;
+                    display: inline-block;
+                    border-radius: 8px;
+                }
+            </style>
+
+            <section class="hero-gif">
+                <img
+                    src="/images/3-1-1.gif"
+                    alt="プレス沖縄イメージ"
+                    class="responsive-gif"
+                    loading="lazy"
+                />
+            </section>
+        </main>
+
+        <a href="https://lin.ee/56a0xBp" target="_blank" class="fixed-button">
+            LINEで予約する
+        </a>
+
+        <Footer />
+        <TodayScheduleImage />
+
+        <!-- ===== JS部分 ===== -->
+
+        <script type="module">
+            // ===== スケジュール配列 =====
+            const schedule1 = [
+                { startHour: 0, image: "/images/1mei.jpg" },
+                { startHour: 1, image: "/images/2mei.jpg" },
+                { startHour: 2, image: "/images/3mei.jpg" },
+                { startHour: 3, image: "/images/4mei.jpg" },
+            ];
+
+            const schedule2 = [
+                { startHour: 0, image: "/images/kami1.gif" },
+                { startHour: 1, image: "/images/kami1.gif" },
+                { startHour: 2, image: "/images/kami1.gif" },
+                { startHour: 3, image: "/images/kami1.gif" },
+                { startHour: 4, image: "/images/kami1.gif" },
+                { startHour: 5, image: "/images/kami1.gif" },
+                { startHour: 6, image: "/images/kami1.gif" },
+                { startHour: 7, image: "/images/kami1.gif" },
+            ];
+
+            const schedule3 = [{ startHour: 0, image: "/images/kuu1.jpg" }];
+
+            const schedule4 = [
+                { startHour: 0, image: "/images/pos1.jpg" },
+                { startHour: 1, image: "/images/pos2.jpg" },
+                { startHour: 2, image: "/images/pos3.jpg" },
+                { startHour: 3, image: "/images/pos4.jpg" },
+                { startHour: 4, image: "/images/pos5.jpg" },
+                { startHour: 5, image: "/images/pos6.jpg" },
+                { startHour: 6, image: "/images/pos7.jpg" },
+            ];
+
+            const schedule5 = [{ startHour: 0, image: "/images/fuu1.jpg" }];
+
+            const schedule6 = [
+                { startHour: 0, image: "/images/menu1.jpg" },
+                { startHour: 1, image: "/images/menu2.jpg" },
+                { startHour: 2, image: "/images/menu3.jpg" },
+            ];
+
+            /**
+             * 指定したスケジュールから現在時刻に合う画像を返す
+             * @param {{startHour:number,image:string}[]} schedule
+             * @returns {string}
+             */
+            function getImageForSchedule(schedule) {
+                const hour = new Date().getHours();
+                return schedule[hour % schedule.length].image;
+            }
+
+            // ID と schedule の紐付け
+            const slideshowIds = [
+                ["slideshow-1", schedule1],
+                ["slideshow-2", schedule2],
+                ["slideshow-3", schedule3],
+                ["slideshow-4", schedule4],
+                ["slideshow-5", schedule5],
+                ["slideshow-6", schedule6],
+            ];
+
+            function updateAllSlideshows() {
+                slideshowIds.forEach(([id, schedule]) => {
+                    const el = document.getElementById(id);
+                    if (el) el.src = getImageForSchedule(schedule);
+                });
+            }
+
+            // 初期表示 & 10分ごとに更新
+            updateAllSlideshows();
+            setInterval(updateAllSlideshows, 10 * 60 * 1000);
+        </script>
+
+        <!-- フェードアニメーション -->
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("show");
+                        }
+                    });
+                });
+                document
+                    .querySelectorAll(".fade-up")
+                    .forEach((el) => observer.observe(el));
+            });
+        </script>
+    </body>
+</html>
