@@ -137,32 +137,18 @@ import "../styles/style.css";
                 <!-- サムネイルとして常に再生される動画 -->
                 <section class="video-section">
                     <!-- 常時ループだが無音 -->
-                    <video
-                        id="preview-video"
-                        class="video-preview"
-                        src="/images/biyou_sample.mp4"
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                        preload="metadata"
-                    >
-                    </video>
+<video id="preview-video" class="video-preview"
+       src="/images/biyou_sample1.mp4"
+       autoplay loop muted playsinline preload="metadata"></video>
                 </section>
 
                 <!-- モーダル（初期は非表示・無音・自動再生させない） -->
-                <div id="video-modal" class="video-modal" style="display:none">
-                    <span id="close-modal" class="close-btn">&times;</span>
-                    <video
-                        id="full-video"
-                        class="video-full"
-                        src="/images/biyou_sample.mp4"
-                        controls
-                        muted
-                        preload="metadata"
-                    >
-                    </video>
-                </div>
+<div id="video-modal" class="video-modal" style="display:none">
+  <span id="close-modal" class="close-btn">&times;</span>
+  <video id="full-video" class="video-full"
+         src="/images/biyou_sample1.mp4"
+         controls muted preload="metadata"></video>
+</div>
 
                 <style>
                     .video-section {
