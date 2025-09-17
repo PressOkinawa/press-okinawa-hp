@@ -133,93 +133,114 @@ import "../styles/style.css";
                 <img id="slideshow-6" class="responsive-img fade-up" />
             </section>
 
-            <section class="video-section">
-                <!-- サムネイルとして常に再生される動画 -->
-                <section class="video-section">
-                    <!-- 常時ループだが無音 -->
-<video id="preview-video" class="video-preview"
-       src="/images/biyou_sample.mp4"
-       autoplay loop muted playsinline preload="metadata"></video>
-                </section>
+<section class="video-section">
+  <!-- 常時ループ（無音）プレビュー -->
+  <video
+    id="preview-video"
+    class="video-preview"
+    src="/images/biyou_sample.mp4"
+    autoplay
+    loop
+    muted
+    playsinline
+    preload="metadata">
+  </video>
 
-                <!-- モーダル（初期は非表示・無音・自動再生させない） -->
-<div id="video-modal" class="video-modal" style="display:none">
-  <span id="close-modal" class="close-btn">&times;</span>
-  <video id="full-video" class="video-full"
-         src="/images/biyou_sample.mp4"
-         controls muted preload="metadata"></video>
-</div>
+  <!-- モーダル（クリック時のみ音ありで再生） -->
+  <div id="video-modal" class="video-modal" style="display:none">
+    <span id="close-modal" class="close-btn">&times;</span>
+    <video
+      id="full-video"
+      class="video-full"
+      src="/images/biyou_sample.mp4"
+      controls
+      muted
+      preload="metadata">
+    </video>
+  </div>
+</section>
 
-                <style>
-                    .video-section {
-                        text-align: center;
-                        margin: 2rem 0;
-                    }
-                    .video-preview {
-                        max-width: 100%;
-                        height: auto;
-                        cursor: pointer;
-                        border-radius: 8px;
-                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-                    }
+<style>
+  .video-section {
+    text-align: center;
+    margin: 2rem 0;
+  }
+  .video-preview {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .video-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+  }
+  .video-full {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+  }
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+  }
+</style>
 
-                    /* モーダル */
-                    .video-modal {
-                        display: none;
-                        position: fixed;
-                        z-index: 1000;
-                        left: 0;
-                        top: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(0, 0, 0, 0.8);
-                        justify-content: center;
-                        align-items: center;
-                    }
-                    .video-full {
-                        max-width: 90%;
-                        max-height: 90%;
-                        border-radius: 8px;
-                    }
-                    .close-btn {
-                        position: absolute;
-                        top: 20px;
-                        right: 30px;
-                        font-size: 40px;
-                        color: #fff;
-                        cursor: pointer;
-                    }
-                </style>
+<script>
+  // 元要素の取得
+  const _preview   = document.getElementById("preview-video");
+  const _modal     = document.getElementById("video-modal");
+  const _closeBtn  = document.getElementById("close-modal");
+  const _fullVideo = document.getElementById("full-video");
 
-                <script>
-                    const preview = document.getElementById("preview-video")!;
-                    const modal = document.getElementById("video-modal")!;
-                    const closeBtn = document.getElementById("close-modal")!;
+  // どれか無ければ安全に終了（以降は実行しない）
+  if (
+    !(_preview instanceof HTMLVideoElement) ||
+    !(_modal instanceof HTMLElement) ||
+    !(_closeBtn instanceof HTMLElement) ||
+    !(_fullVideo instanceof HTMLVideoElement)
+  ) {
+    console.warn("video要素が不足しているためスクリプトは実行されませんでした。");
+    return;
+  }
 
-                    function openModal() {
-                        modal.style.display = "flex";
-                        const fullVideo = modal.querySelector("video")!;
-                        fullVideo.currentTime = 0;
-                        fullVideo.play();
-                    }
+  /** @type {HTMLVideoElement} */ const preview   = _preview;
+  /** @type {HTMLElement}      */ const modal     = _modal;
+  /** @type {HTMLElement}      */ const closeBtn  = _closeBtn;
+  /** @type {HTMLVideoElement} */ const fullVideo = _fullVideo;
 
-                    function closeModal() {
-                        modal.style.display = "none";
-                        const fullVideo = modal.querySelector("video")!;
-                        fullVideo.pause();
-                    }
+  function openModal() {
+    modal.style.display = "flex";
+    fullVideo.currentTime = 0;
+    fullVideo.muted = false;          // クリックで音ON
+    fullVideo.play().catch(() => {});
+  }
 
-                    preview.addEventListener("click", openModal);
-                    closeBtn.addEventListener("click", closeModal);
+  function closeModal() {
+    modal.style.display = "none";
+    fullVideo.pause();
+    fullVideo.muted = true;           // 次回のため音OFF
+  }
 
-                    modal.addEventListener("click", (e) => {
-                        if (e.target === modal) closeModal();
-                    });
+  preview.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+</script>
 
-                    document.addEventListener("keydown", (e) => {
-                        if (e.key === "Escape") closeModal();
-                    });
-                </script>
+
+
+
 
                 <section class="hero-gif">
                     <img
