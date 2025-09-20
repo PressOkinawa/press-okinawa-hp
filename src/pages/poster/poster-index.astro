@@ -1,224 +1,280 @@
 ---
 import Header from "../../components/header.astro";
 import Footer from "../../components/footer.astro";
+import TodayScheduleImage from "../../components/TodayScheduleImage.astro";
+import "../../styles/style.css";
 ---
 
 <!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <title>プレス沖縄｜ポスター</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="沖縄印刷,名刺,北谷,ポスター,プレス沖縄,印刷,砂辺" />
-</head>
-<body>
-  <Header />
+  <head>
+    <meta charset="UTF-8" />
+    <title>プレス沖縄｜ポスター</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="沖縄印刷,名刺,めいし,北谷,ポスター,コマーシャル,プレス沖縄,印刷,砂辺"
+    />
+    <link rel="stylesheet" href="main-style.css" />
+    <script src="https://js.ptengine.jp/55iy7etj.js" defer></script>
+  </head>
 
-  <main>
-    <!-- コピー -->
-    <section class="copy-wrap">
-      <div class="copy-card">
-        <h1 class="copy-title">🔶 ポスター制作、すべてお任せください</h1>
-        <p class="copy-lead">～広告で世界を動かす。沖縄発、世界基準の広告制作～</p>
-        <p class="copy-tag">「伝える」から「響かせる」広告へ。私たちのデザインで、あなたの想いをカタチに。</p>
-      </div>
-    </section>
+  <body>
+    <Header />
 
-    <!-- ART GALLERY（JSなし・おしゃれ配置） -->
-    <section class="gallery-wrap" id="gallery">
-      <header class="gallery-head">
-        <h2>ART GALLERY 20</h2>
-      </header>
-
-      <!-- /images/1-1.jpg ~ 1-20.jpg -->
-      <div class="gallery-grid">
-        <!-- 1〜20：必要枚数に応じて増減可 -->
-        <a class="tile" href="#art-1"><figure class="card"><img src="/images/1-1.jpg" alt="No.1-1"><figcaption>No. 1-1</figcaption></figure></a>
-        <a class="tile" href="#art-2"><figure class="card"><img src="/images/1-2.jpg" alt="No.1-2"><figcaption>No. 1-2</figcaption></figure></a>
-        <a class="tile" href="#art-3"><figure class="card"><img src="/images/1-3.jpg" alt="No.1-3"><figcaption>No. 1-3</figcaption></figure></a>
-        <a class="tile" href="#art-4"><figure class="card"><img src="/images/1-4.jpg" alt="No.1-4"><figcaption>No. 1-4</figcaption></figure></a>
-        <a class="tile" href="#art-5"><figure class="card"><img src="/images/1-5.jpg" alt="No.1-5"><figcaption>No. 1-5</figcaption></figure></a>
-        <a class="tile" href="#art-6"><figure class="card"><img src="/images/1-6.jpg" alt="No.1-6"><figcaption>No. 1-6</figcaption></figure></a>
-        <a class="tile" href="#art-7"><figure class="card"><img src="/images/1-7.jpg" alt="No.1-7"><figcaption>No. 1-7</figcaption></figure></a>
-        <a class="tile" href="#art-8"><figure class="card"><img src="/images/1-8.jpg" alt="No.1-8"><figcaption>No. 1-8</figcaption></figure></a>
-        <a class="tile" href="#art-9"><figure class="card"><img src="/images/1-9.jpg" alt="No.1-9"><figcaption>No. 1-9</figcaption></figure></a>
-        <a class="tile" href="#art-10"><figure class="card"><img src="/images/1-10.jpg" alt="No.1-10"><figcaption>No. 1-10</figcaption></figure></a>
-        <a class="tile" href="#art-11"><figure class="card"><img src="/images/1-11.jpg" alt="No.1-11"><figcaption>No. 1-11</figcaption></figure></a>
-        <a class="tile" href="#art-12"><figure class="card"><img src="/images/1-12.jpg" alt="No.1-12"><figcaption>No. 1-12</figcaption></figure></a>
-        <a class="tile" href="#art-13"><figure class="card"><img src="/images/1-13.jpg" alt="No.1-13"><figcaption>No. 1-13</figcaption></figure></a>
-        <a class="tile" href="#art-14"><figure class="card"><img src="/images/1-14.jpg" alt="No.1-14"><figcaption>No. 1-14</figcaption></figure></a>
-        <a class="tile" href="#art-15"><figure class="card"><img src="/images/1-15.jpg" alt="No.1-15"><figcaption>No. 1-15</figcaption></figure></a>
-        <a class="tile" href="#art-16"><figure class="card"><img src="/images/1-16.jpg" alt="No.1-16"><figcaption>No. 1-16</figcaption></figure></a>
-        <a class="tile" href="#art-17"><figure class="card"><img src="/images/1-17.jpg" alt="No.1-17"><figcaption>No. 1-17</figcaption></figure></a>
-        <a class="tile" href="#art-18"><figure class="card"><img src="/images/1-18.jpg" alt="No.1-18"><figcaption>No. 1-18</figcaption></figure></a>
-        <a class="tile" href="#art-19"><figure class="card"><img src="/images/1-19.jpg" alt="No.1-19"><figcaption>No. 1-19</figcaption></figure></a>
-        <a class="tile" href="#art-20"><figure class="card"><img src="/images/1-20.jpg" alt="No.1-20"><figcaption>No. 1-20</figcaption></figure></a>
-      </div>
-
-      <!-- CSSライトボックス（:target） -->
-      <!-- 1〜20 -->
-      <figure class="lb" id="art-1"><a class="lb__close" href="#gallery">×</a><img src="/images/1-1.jpg" alt="No.1-1"><figcaption>No. 1-1</figcaption><a class="lb__nav lb__prev" href="#art-20">‹</a><a class="lb__nav lb__next" href="#art-2">›</a></figure>
-      <figure class="lb" id="art-2"><a class="lb__close" href="#gallery">×</a><img src="/images/1-2.jpg" alt="No.1-2"><figcaption>No. 1-2</figcaption><a class="lb__nav lb__prev" href="#art-1">‹</a><a class="lb__nav lb__next" href="#art-3">›</a></figure>
-      <figure class="lb" id="art-3"><a class="lb__close" href="#gallery">×</a><img src="/images/1-3.jpg" alt="No.1-3"><figcaption>No. 1-3</figcaption><a class="lb__nav lb__prev" href="#art-2">‹</a><a class="lb__nav lb__next" href="#art-4">›</a></figure>
-      <figure class="lb" id="art-4"><a class="lb__close" href="#gallery">×</a><img src="/images/1-4.jpg" alt="No.1-4"><figcaption>No. 1-4</figcaption><a class="lb__nav lb__prev" href="#art-3">‹</a><a class="lb__nav lb__next" href="#art-5">›</a></figure>
-      <figure class="lb" id="art-5"><a class="lb__close" href="#gallery">×</a><img src="/images/1-5.jpg" alt="No.1-5"><figcaption>No. 1-5</figcaption><a class="lb__nav lb__prev" href="#art-4">‹</a><a class="lb__nav lb__next" href="#art-6">›</a></figure>
-      <figure class="lb" id="art-6"><a class="lb__close" href="#gallery">×</a><img src="/images/1-6.jpg" alt="No.1-6"><figcaption>No. 1-6</figcaption><a class="lb__nav lb__prev" href="#art-5">‹</a><a class="lb__nav lb__next" href="#art-7">›</a></figure>
-      <figure class="lb" id="art-7"><a class="lb__close" href="#gallery">×</a><img src="/images/1-7.jpg" alt="No.1-7"><figcaption>No. 1-7</figcaption><a class="lb__nav lb__prev" href="#art-6">‹</a><a class="lb__nav lb__next" href="#art-8">›</a></figure>
-      <figure class="lb" id="art-8"><a class="lb__close" href="#gallery">×</a><img src="/images/1-8.jpg" alt="No.1-8"><figcaption>No. 1-8</figcaption><a class="lb__nav lb__prev" href="#art-7">‹</a><a class="lb__nav lb__next" href="#art-9">›</a></figure>
-      <figure class="lb" id="art-9"><a class="lb__close" href="#gallery">×</a><img src="/images/1-9.jpg" alt="No.1-9"><figcaption>No. 1-9</figcaption><a class="lb__nav lb__prev" href="#art-8">‹</a><a class="lb__nav lb__next" href="#art-10">›</a></figure>
-      <figure class="lb" id="art-10"><a class="lb__close" href="#gallery">×</a><img src="/images/1-10.jpg" alt="No.1-10"><figcaption>No. 1-10</figcaption><a class="lb__nav lb__prev" href="#art-9">‹</a><a class="lb__nav lb__next" href="#art-11">›</a></figure>
-      <figure class="lb" id="art-11"><a class="lb__close" href="#gallery">×</a><img src="/images/1-11.jpg" alt="No.1-11"><figcaption>No. 1-11</figcaption><a class="lb__nav lb__prev" href="#art-10">‹</a><a class="lb__nav lb__next" href="#art-12">›</a></figure>
-      <figure class="lb" id="art-12"><a class="lb__close" href="#gallery">×</a><img src="/images/1-12.jpg" alt="No.1-12"><figcaption>No. 1-12</figcaption><a class="lb__nav lb__prev" href="#art-11">‹</a><a class="lb__nav lb__next" href="#art-13">›</a></figure>
-      <figure class="lb" id="art-13"><a class="lb__close" href="#gallery">×</a><img src="/images/1-13.jpg" alt="No.1-13"><figcaption>No. 1-13</figcaption><a class="lb__nav lb__prev" href="#art-12">‹</a><a class="lb__nav lb__next" href="#art-14">›</a></figure>
-      <figure class="lb" id="art-14"><a class="lb__close" href="#gallery">×</a><img src="/images/1-14.jpg" alt="No.1-14"><figcaption>No. 1-14</figcaption><a class="lb__nav lb__prev" href="#art-13">‹</a><a class="lb__nav lb__next" href="#art-15">›</a></figure>
-      <figure class="lb" id="art-15"><a class="lb__close" href="#gallery">×</a><img src="/images/1-15.jpg" alt="No.1-15"><figcaption>No. 1-15</figcaption><a class="lb__nav lb__prev" href="#art-14">‹</a><a class="lb__nav lb__next" href="#art-16">›</a></figure>
-      <figure class="lb" id="art-16"><a class="lb__close" href="#gallery">×</a><img src="/images/1-16.jpg" alt="No.1-16"><figcaption>No. 1-16</figcaption><a class="lb__nav lb__prev" href="#art-15">‹</a><a class="lb__nav lb__next" href="#art-17">›</a></figure>
-      <figure class="lb" id="art-17"><a class="lb__close" href="#gallery">×</a><img src="/images/1-17.jpg" alt="No.1-17"><figcaption>No. 1-17</figcaption><a class="lb__nav lb__prev" href="#art-16">‹</a><a class="lb__nav lb__next" href="#art-18">›</a></figure>
-      <figure class="lb" id="art-18"><a class="lb__close" href="#gallery">×</a><img src="/images/1-18.jpg" alt="No.1-18"><figcaption>No. 1-18</figcaption><a class="lb__nav lb__prev" href="#art-17">‹</a><a class="lb__nav lb__next" href="#art-19">›</a></figure>
-      <figure class="lb" id="art-19"><a class="lb__close" href="#gallery">×</a><img src="/images/1-19.jpg" alt="No.1-19"><figcaption>No. 1-19</figcaption><a class="lb__nav lb__prev" href="#art-18">‹</a><a class="lb__nav lb__next" href="#art-20">›</a></figure>
-      <figure class="lb" id="art-20"><a class="lb__close" href="#gallery">×</a><img src="/images/1-20.jpg" alt="No.1-20"><figcaption>No. 1-20</figcaption><a class="lb__nav lb__prev" href="#art-19">‹</a><a class="lb__nav lb__next" href="#art-1">›</a></figure>
-    </section>
-
-    <!-- ポスター作例（CSSオートスライド／小さめ） -->
-    <section class="slides">
-      <h2>ポスター作成例（オートスライド）</h2>
-      <figure class="slide-frame">
-        <div class="slide-media slideshow" style="--count:7; --interval:6s;">
-          <img src="/images/pos1.jpg" alt="pos1" />
-          <img src="/images/pos2.jpg" alt="pos2" />
-          <img src="/images/pos3.jpg" alt="pos3" />
-          <img src="/images/pos4.jpg" alt="pos4" />
-          <img src="/images/pos5.jpg" alt="pos5" />
-          <img src="/images/pos6.jpg" alt="pos6" />
-          <img src="/images/pos7.jpg" alt="pos7" />
+    <main>
+      <!-- ===== コピー＆CTA ===== -->
+      <section class="copy-wrap fade-up">
+        <div class="copy-card">
+          <h1 class="copy-title">🔶 ポスター制作、すべてお任せください</h1>
+          <p class="copy-lead">～広告で世界を動かす。沖縄発、世界基準の広告制作～</p>
+          <p class="copy-tag">「伝える」から「響かせる」広告へ。<br />当社のデザインで、あなたの想いをカタチにします。</p>
         </div>
-      </figure>
-    </section>
-  </main>
 
-  <a href="https://lin.ee/56a0xBp" target="_blank" rel="noopener" class="fixed-button">LINEで予約する</a>
-  <Footer />
+        <div class="grid two">
+          <article class="panel">
+            <h2 class="panel-title">🔶 企業理念</h2>
+            <p>全てが手作業。世界トップの作品づくりを目指します。<br />
+              20万点以上の所蔵作品と実績を活かし、<br />
+              「広告で世界を動かす」を使命に、沖縄から世界へ。<br />
+              一つひとつ丁寧に、「伝わる広告」を制作します。
+            </p>
+          </article>
 
-  <style>
-    :root{
-      --page-w: 940px;             /* 全体の最大幅（少し小さめ） */
-      --pad: 16px;
-      --brand-blue:#0077ff;
-      --brand-cyan:#00d4ff;
-      --ink:#222;
-      --wall:#f6f4ef;
-      --gap: 14px;
-      --tile-min: 180px;           /* ★ タイル最小幅（小さく見せる） */
-    }
-    *,*::before,*::after{ box-sizing:border-box; }
-    html,body{ margin:0; }
-    img{ max-width:100%; height:auto; vertical-align:middle; }
+          <article class="panel">
+            <h2 class="panel-title">🔶 当社の特徴</h2>
+            <ul class="bullet">
+              <li>伝わるデザイン、響くメッセージ</li>
+              <li>企画から印刷までワンストップ対応</li>
+              <li>沖縄全域対応の広告制作プロ集団</li>
+              <li>デザインで魅せる・伝える・広げる</li>
+            </ul>
+          </article>
+        </div>
 
-    .copy-wrap{ max-width:var(--page-w); margin:18px auto 10px; padding:0 var(--pad); }
-    .copy-card{ background:#fff; border-radius:16px; padding:16px 14px; border-left:6px solid var(--brand-blue); box-shadow:0 8px 22px rgba(0,0,0,.06); }
-    .copy-title{ color:var(--brand-blue); margin:0 0 .35rem; font-size:clamp(1.2rem,1.8vw,1.45rem); }
-    .copy-lead{ color:#555; margin:0 0 .25rem; }
-    .copy-tag{ color:var(--ink); font-weight:600; margin:0; }
+        <article class="panel">
+          <h2 class="panel-title">🔶 サービス紹介</h2>
+          <div class="grid two">
+            <div class="service">
+              <h3>▶ 紙媒体（ポスター／チラシ／パンフレット）</h3>
+              <p>企画・デザイン・印刷まですべて対応。<br />沖縄全域対応、柔軟＆スピーディに対応します。</p>
+            </div>
+            <div class="service">
+              <h3>▶ Web・SNS用広告</h3>
+              <p>デザインから素材制作・撮影までまとめてお任せ。<br />SNS・キャンペーンにも対応。</p>
+            </div>
+          </div>
+        </article>
 
-    /* ===== ギャラリー（Grid＋おしゃれ比率） ===== */
-    .gallery-wrap{ max-width:var(--page-w); margin:16px auto; padding:0 var(--pad); }
-    .gallery-head h2{ margin:0 0 6px; color:var(--brand-blue); font-size:1.05rem; letter-spacing:.02em; }
+        <article class="panel">
+          <h2 class="panel-title">🔶 当社の強み</h2>
+          <ul class="bullet cols">
+            <li>ワンストップ対応（企画～印刷まで）</li>
+            <li>高いデザイン力で広告効果を最大化</li>
+            <li>ポスター以外も幅広く対応</li>
+            <li>写真撮影・素材制作も社内完結</li>
+            <li>小ロット・短納期にも対応</li>
+            <li>沖縄全域、柔軟にサポート</li>
+          </ul>
+        </article>
 
-    .gallery-grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fill, minmax(var(--tile-min), 1fr));
-      gap: var(--gap);
-      background:var(--wall);
-      padding: 12px;
-      border-radius: 16px;
-      box-shadow: inset 0 6px 16px rgba(0,0,0,.06), 0 6px 18px rgba(0,0,0,.06);
-    }
-    .tile{ text-decoration:none; color:inherit; }
-    .card{
-      position:relative;
-      overflow:hidden;
-      border-radius:14px;
-      background:#fff;
-      box-shadow: 0 6px 18px rgba(0,0,0,.08);
-      border:1px solid #eee;
-    }
-    .card img{
-      width:100%;
-      height:100%;
-      aspect-ratio: 4 / 3;           /* 基本比率 */
-      object-fit: cover;
-      transition: transform .25s ease, filter .25s ease;
-    }
-    /* ランダム風リズム（ワイド・縦長・正方形を混ぜる） */
-    .gallery-grid .tile:nth-child(10n+1) .card img{ aspect-ratio: 16 / 9; } /* ワイド */
-    .gallery-grid .tile:nth-child(10n+3) .card img{ aspect-ratio: 1 / 1; }  /* 正方形 */
-    .gallery-grid .tile:nth-child(10n+6) .card img{ aspect-ratio: 3 / 4; }  /* 縦長 */
-    .gallery-grid .tile:nth-child(10n+8) .card img{ aspect-ratio: 2 / 3; }  /* さらに縦長 */
+        <article class="panel">
+          <h2 class="panel-title">🔶 ポスター制作の流れ</h2>
+          <ol class="steps">
+            <li><span>① 企画・準備：</span>目的設定、情報整理、方向性決定</li>
+            <li><span>② デザイン制作：</span>ラフ作成、レイアウト、配色・フォント選定</li>
+            <li><span>③ 仕上げ・出力：</span>校正・修正、印刷、デジタル出力対応</li>
+          </ol>
+        </article>
+      </section>
 
-    .card figcaption{
-      position:absolute; left:0; right:0; bottom:0;
-      padding:.35rem .55rem;
-      color:#fff; font-weight:600; font-size:.9rem; text-align:center;
-      backdrop-filter: blur(4px);
-      background: linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.45));
-      text-decoration:none;
-    }
-    .card:hover img{ transform: scale(1.03); filter: saturate(1.05); }
+      <!-- ===== 2枚セット オファー（追加） ===== -->
+      <section id="offer" class="offer-wrap fade-up" aria-label="2枚セットでお得！選べるモダンアートポスター">
+        <div class="offer-card">
+          <div class="offer-head">
+            <h2 class="offer-title">【2枚セットでお得！選べるモダンアートポスター】</h2>
+            <p class="price">
+              <span class="price-now">今なら <strong>2枚セット 4,680円</strong> <small>（送料無料）</small></span>
+              <span class="price-note">通常1枚3,450円のA4アートポスター／初めての方にもぴったり</span>
+            </p>
+            <p class="muted">※ポスターのみの販売。額や装飾品は含まれません。</p>
+          </div>
 
-    /* ===== スライド（CSSのみ／小さめ） ===== */
-    .slides{ max-width:var(--page-w); margin:16px auto 28px; padding:0 var(--pad); }
-    .slides h2{ margin:0 0 6px; color:var(--brand-blue); font-size:1.05rem; }
-    .slide-frame{ margin:0; background:#fff; border-radius:14px; padding:10px; box-shadow:0 8px 22px rgba(0,0,0,.06); }
-    .slide-media{
-      position:relative;
-      height: clamp(180px, 32vh, 360px);  /* ★ さらに小さめ */
-      display:flex; justify-content:center; align-items:center;
-      border-radius:10px; overflow:hidden;
-      background:linear-gradient(180deg,#fafafa,#f3f6fb);
-    }
-    .slideshow{ --count:7; --interval:6s; --dur: calc(var(--count) * var(--interval)); }
-    .slideshow img{
-      position:absolute; inset:0; margin:auto;
-      width:auto; height:100%; max-width:100%;
-      object-fit: contain; border-radius:8px;
-      opacity:0; animation: slideShow var(--dur) linear infinite;
-    }
-    .slideshow img:nth-child(1){ animation-delay: calc(var(--interval) * 0); }
-    .slideshow img:nth-child(2){ animation-delay: calc(var(--interval) * 1); }
-    .slideshow img:nth-child(3){ animation-delay: calc(var(--interval) * 2); }
-    .slideshow img:nth-child(4){ animation-delay: calc(var(--interval) * 3); }
-    .slideshow img:nth-child(5){ animation-delay: calc(var(--interval) * 4); }
-    .slideshow img:nth-child(6){ animation-delay: calc(var(--interval) * 5); }
-    .slideshow img:nth-child(7){ animation-delay: calc(var(--interval) * 6); }
-    @keyframes slideShow{
-      0%{ opacity:0 }
-      8%{ opacity:1 }
-      84%{ opacity:1 }
-      100%{ opacity:0 }
-    }
+          <div class="grid two">
+            <article class="panel soft">
+              <h3 class="panel-sub">◆ 選べる20種類のデザイン</h3>
+              <p>沖縄テイスト・モダンなど、おしゃれなデザインを多数ご用意。<br />お部屋の雰囲気に合わせて自由に組み合わせ可能です。</p>
+            </article>
+            <article class="panel soft">
+              <h3 class="panel-sub">◆ 高品質な仕上がり</h3>
+              <p>LINSLが厳選した高級紙＆高精細プリント。<br />多くのお客様から高評価をいただいています。</p>
+            </article>
+          </div>
 
-    /* CSSライトボックス */
-    .lb{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.85); padding:22px; z-index:90; }
-    .lb img{ max-width:92vw; max-height:86vh; object-fit:contain; border-radius:8px; box-shadow:0 12px 40px rgba(0,0,0,.4); }
-    .lb figcaption{ position:absolute; bottom:12px; left:50%; transform:translateX(-50%); color:#fff; background:rgba(0,0,0,.35); padding:.3rem .55rem; border-radius:6px; font-weight:600; }
-    .lb__close{ position:absolute; top:12px; right:12px; width:40px; height:40px; display:grid; place-items:center; border-radius:999px; background:rgba(255,255,255,.1); color:#fff; text-decoration:none; font-size:20px; }
-    .lb__nav{ position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; display:grid; place-items:center; border-radius:999px; background:rgba(255,255,255,.1); color:#fff; text-decoration:none; font-size:22px; }
-    .lb__prev{ left:14px; } .lb__next{ right:14px; }
-    .lb:target{ display:flex; }
+          <article class="panel soft">
+            <h3 class="panel-sub">◆ 飾りやすいA4サイズ</h3>
+            <ul class="bullet">
+              <li>1枚でコンパクトに</li>
+              <li>2枚でボリューム感をプラス</li>
+            </ul>
+            <p>初心者にも扱いやすく、どんなお部屋にも取り入れやすいサイズです。</p>
+          </article>
 
-    /* 固定ボタン */
-    .fixed-button{ position:fixed; right:1rem; bottom:1rem; background:linear-gradient(90deg,var(--brand-blue),var(--brand-cyan)); color:#fff; text-decoration:none; padding:.85rem 1.1rem; border-radius:999px; box-shadow:0 8px 24px rgba(0,0,0,.18); font-weight:700; }
+          <article class="panel">
+            <h3 class="panel-sub">【お申し込み方法】</h3>
+            <p>LINE・メール・お電話にてご注文ください。<br />お申し込み後、振込先をご連絡いたします。ご入金確認後に発送いたします。</p>
+            <div class="contact-cta">
+              <a class="btn" href="https://lin.ee/56a0xBp" target="_blank" rel="noopener" aria-label="LINEで注文する">LINEで注文する</a>
+              <a class="btn ghost" href="mailto:sunabe@kyi.biglobe.e.jp" aria-label="メールで注文する">メールで注文する</a>
+              <a class="btn ghost" href="tel:090-1491-1515" aria-label="電話で注文する">電話で注文する</a>
+            </div>
+          </article>
+        </div>
+      </section>
 
-    @media (max-width: 900px){
-      :root{ --tile-min: 160px; }
-    }
-    @media (max-width: 600px){
-      :root{ --tile-min: 150px; }
-      .slide-media{ height: clamp(170px, 30vh, 320px); }
-    }
-    @media (prefers-reduced-motion: reduce){
-      .slideshow img{ animation: none; opacity: 1; }
-    }
-  </style>
-</body>
+      <!-- ===== ポスター作例（毎時間切替） ===== -->
+      <section class="slides">
+        <h2>ポスター作成例（毎時間変更します）</h2>
+        <img id="slideshow-1" class="responsive-img fade-up" alt="ポスター作例" />
+      </section>
+    </main>
+
+    <!-- 固定フローティング予約ボタン -->
+    <a href="https://lin.ee/56a0xBp" target="_blank" rel="noopener" class="fixed-button">LINEで予約する</a>
+
+    <Footer />
+    <TodayScheduleImage />
+
+    <!-- ===== スタイル ===== -->
+    <style>
+      :root {
+        --brand-blue: #0077ff;
+        --brand-cyan: #00d4ff;
+        --ink: #222;
+        --ink2: #444;
+        --bg-soft: #f7faff;
+        --bg-white: #fff;
+      }
+
+      main { padding-bottom: 6rem; }
+      .responsive-img { max-width: 100%; height: auto; display: inline-block; border-radius: 8px; }
+      .slides { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+      .slides h2 { font-size: 1.3rem; color: var(--brand-blue); margin-bottom: 1rem; }
+
+      /* コピーセクション */
+      .copy-wrap { max-width: 1100px; margin: 2.5rem auto 1.5rem; padding: 0 1rem; }
+      .copy-card {
+        background: var(--bg-white); border-radius: 16px; padding: 2rem 1.6rem;
+        border-left: 6px solid var(--brand-blue);
+        box-shadow: 0 10px 28px rgba(0,0,0,.06);
+      }
+      .copy-title { font-size: 1.6rem; margin: 0 0 .3rem; color: var(--brand-blue); }
+      .copy-lead { color: var(--ink2); margin: 0 0 .5rem; }
+      .copy-tag { color: var(--ink); font-weight: 600; }
+
+      /* 汎用 */
+      .grid.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.2rem; }
+      .panel { background: var(--bg-white); border-radius: 14px; padding: 1.4rem 1.2rem; box-shadow: 0 8px 24px rgba(0,0,0,.05); }
+      .panel.soft { box-shadow: 0 6px 18px rgba(0,0,0,.04); }
+      .panel-title { font-size: 1.2rem; margin: 0 0 .8rem; color: var(--brand-blue); border-bottom: 2px solid #e9f2ff; padding-bottom: .3rem; }
+      .panel-sub { font-size: 1.05rem; margin: .2rem 0 .4rem; color: var(--ink); }
+      .bullet { margin: 0; padding-left: 1.2rem; line-height: 1.9; color: var(--ink2); }
+      .bullet.cols { columns: 2; column-gap: 2rem; }
+      .bullet li { break-inside: avoid; margin: 0 0 .2rem; }
+
+      /* オファー */
+      .offer-wrap { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+      .offer-card { background: var(--bg-white); border-radius: 18px; padding: 1.6rem 1.2rem; box-shadow: 0 12px 28px rgba(0,0,0,.06); border-left: 6px solid var(--brand-blue); }
+      .offer-head { margin-bottom: .6rem; }
+      .offer-title { margin: 0 0 .4rem; font-size: 1.4rem; color: var(--brand-blue); }
+      .price { display: flex; flex-direction: column; gap: .2rem; margin: .3rem 0 .2rem; }
+      .price-now { font-size: 1.1rem; font-weight: 700; }
+      .price-note { color: var(--ink2); font-size: .95rem; }
+      .muted { color: #666; font-size: .92rem; }
+
+      .contact-cta { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .6rem; }
+      .btn {
+        display: inline-block; padding: .85rem 1.2rem; border-radius: 999px; font-weight: 700; text-decoration: none;
+        color: #fff; background: linear-gradient(90deg, var(--brand-blue), var(--brand-cyan));
+        box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      }
+      .btn.ghost {
+        color: var(--brand-blue); background: transparent; border: 2px solid #d7e8ff;
+        box-shadow: none;
+      }
+
+      /* 予約ボタン */
+      .fixed-button {
+        position: fixed; right: 1rem; bottom: 1rem;
+        background: linear-gradient(90deg, var(--brand-blue), var(--brand-cyan));
+        color: #fff; text-decoration: none; padding: .9rem 1.2rem; border-radius: 999px;
+        box-shadow: 0 8px 24px rgba(0,0,0,.18); font-weight: 700;
+      }
+
+      .fade-up { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+      .fade-up.show { opacity: 1; transform: translateY(0); }
+
+      @media (max-width: 900px) {
+        .bullet.cols { columns: 1; }
+        .grid.two { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 600px) {
+        .copy-card, .offer-card { padding: 1.6rem 1.1rem; }
+        .copy-title { font-size: 1.35rem; }
+        .offer-title { font-size: 1.25rem; }
+      }
+    </style>
+
+    <!-- ===== スライドショー（pos1〜pos7 / 毎時切替） ===== -->
+    <script type="module">
+      // pos1〜pos7 を /images/ ほかに自動フォールバック
+      const schedule1 = Array.from({ length: 7 }, (_, i) => ({
+        startHour: i,
+        image: `pos${i + 1}` // 拡張子なしのベース名
+      }));
+
+      function getImageForSchedule(schedule) {
+        const h = new Date().getHours();
+        return schedule[h % schedule.length].image;
+      }
+
+      function candidateSrcs(baseName) {
+        const bases = ["/images/", "/images/2ポスター24時間/", "/images/3ポスター/2ポスター24時間/"];
+        const exts  = [".jpg", ".jpeg", ".png", ".webp"];
+        const out = [];
+        for (const b of bases) for (const e of exts) out.push(`${b}${baseName}${e}`);
+        return out;
+      }
+
+      function setSrcWithFallback(el, image) {
+        if (image.startsWith("/")) { el.src = image; return; }
+        const list = candidateSrcs(image);
+        let i = 0;
+        el.onerror = () => { if (i < list.length) el.src = list[i++]; else el.onerror = null; };
+        el.src = list[i++];
+      }
+
+      function updateAll() {
+        const el = document.getElementById("slideshow-1");
+        if (!el) return;
+        const img = getImageForSchedule(schedule1);
+        setSrcWithFallback(el, img);
+        el.loading = el.loading || "lazy";
+        el.decoding = el.decoding || "async";
+      }
+
+      updateAll();
+      setInterval(updateAll, 10 * 60 * 1000);
+    </script>
+
+    <!-- ===== フェードイン ===== -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("show"); });
+        });
+        document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
 </html>
