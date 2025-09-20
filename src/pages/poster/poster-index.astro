@@ -88,7 +88,7 @@ import "../../styles/style.css";
         </article>
       </section>
 
-      <!-- ===== 2枚セット オファー（追加） ===== -->
+      <!-- ===== 2枚セット オファー ===== -->
       <section id="offer" class="offer-wrap fade-up" aria-label="2枚セットでお得！選べるモダンアートポスター">
         <div class="offer-card">
           <div class="offer-head">
@@ -225,46 +225,31 @@ import "../../styles/style.css";
       }
     </style>
 
-    <!-- ===== スライドショー（pos1〜pos7 / 毎時切替） ===== -->
+    <!-- ===== 1時間ごとに画像を切替 ===== -->
     <script type="module">
-      // pos1〜pos7 を /images/ ほかに自動フォールバック
-      const schedule1 = Array.from({ length: 7 }, (_, i) => ({
-        startHour: i,
-        image: `pos${i + 1}` // 拡張子なしのベース名
-      }));
+      // public/images に pos1.jpg ～ pos7.jpg を置く前提
+      const images = [
+        "/images/pos1.jpg",
+        "/images/pos2.jpg",
+        "/images/pos3.jpg",
+        "/images/pos4.jpg",
+        "/images/pos5.jpg",
+        "/images/pos6.jpg",
+        "/images/pos7.jpg",
+      ];
 
-      function getImageForSchedule(schedule) {
-        const h = new Date().getHours();
-        return schedule[h % schedule.length].image;
-      }
-
-      function candidateSrcs(baseName) {
-        const bases = ["/images/", "/images/2ポスター24時間/", "/images/3ポスター/2ポスター24時間/"];
-        const exts  = [".jpg", ".jpeg", ".png", ".webp"];
-        const out = [];
-        for (const b of bases) for (const e of exts) out.push(`${b}${baseName}${e}`);
-        return out;
-      }
-
-      function setSrcWithFallback(el, image) {
-        if (image.startsWith("/")) { el.src = image; return; }
-        const list = candidateSrcs(image);
-        let i = 0;
-        el.onerror = () => { if (i < list.length) el.src = list[i++]; else el.onerror = null; };
-        el.src = list[i++];
-      }
-
-      function updateAll() {
+      function updateSlideshow() {
         const el = document.getElementById("slideshow-1");
         if (!el) return;
-        const img = getImageForSchedule(schedule1);
-        setSrcWithFallback(el, img);
-        el.loading = el.loading || "lazy";
-        el.decoding = el.decoding || "async";
+        const hour = new Date().getHours();     // 0–23
+        const idx  = hour % images.length;      // 時間に応じて選択
+        el.src = images[idx];
+        el.loading = "lazy";
+        el.decoding = "async";
       }
 
-      updateAll();
-      setInterval(updateAll, 10 * 60 * 1000);
+      updateSlideshow();                        // 初回
+      setInterval(updateSlideshow, 60 * 60 * 1000); // 1時間ごとに更新
     </script>
 
     <!-- ===== フェードイン ===== -->
