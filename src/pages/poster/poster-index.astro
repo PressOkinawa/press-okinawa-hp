@@ -132,13 +132,16 @@ import "../../styles/style.css";
         </div>
       </section>
 
-      <!-- ===== ポスター作例（毎時間切替） ===== -->
+      <!-- ===== 作例①：毎時切替の単枚スライド ===== -->
       <section class="slides">
-        <h2>ポスター作成例（参考例）</h2>
-        <div class="grid two">
-          <img src="/images/pos1.jpg" class="responsive-img fade-up" alt="ポスター参考例1" />
-          <img src="/images/pos2.jpg" class="responsive-img fade-up" alt="ポスター参考例2" />
-        </div>
+        <h2>ポスター作成例（毎時間変更します）</h2>
+        <img id="slideshow-1" class="responsive-img fade-up" alt="ポスター作例" />
+      </section>
+
+      <!-- ===== 作例②：ART ギャラリー（縮小サムネイル＋段差） ===== -->
+      <section class="slides fade-up" aria-label="アートギャラリー">
+        <h2 class="slides-title">ART ギャラリー</h2>
+        <div id="artWall" class="art-wall"></div>
       </section>
     </main>
 
@@ -162,7 +165,7 @@ import "../../styles/style.css";
       main { padding-bottom: 6rem; }
       .responsive-img { max-width: 100%; height: auto; display: inline-block; border-radius: 8px; }
       .slides { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
-      .slides h2 { font-size: 1.3rem; color: var(--brand-blue); margin-bottom: 1rem; }
+      .slides h2, .slides-title { font-size: 1.3rem; color: var(--brand-blue); margin-bottom: 1rem; }
 
       /* コピーセクション */
       .copy-wrap { max-width: 1100px; margin: 2.5rem auto 1.5rem; padding: 0 1rem; }
@@ -217,21 +220,51 @@ import "../../styles/style.css";
       .fade-up { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
       .fade-up.show { opacity: 1; transform: translateY(0); }
 
-      @media (max-width: 900px) {
-        .bullet.cols { columns: 1; }
-        .grid.two { grid-template-columns: 1fr; }
+      /* ===== ART ギャラリー（縮小サムネイル＋段差） ===== */
+      .art-wall {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        justify-content: center;
       }
-      @media (max-width: 600px) {
-        .copy-card, .offer-card { padding: 1.6rem 1.1rem; }
-        .copy-title { font-size: 1.35rem; }
-        .offer-title { font-size: 1.25rem; }
+      .art-card {
+        flex: 0 1 calc(25% - 14px);   /* PCで4列 */
+        max-width: 260px;             /* はみ出し防止 */
+        border-radius: 12px;
+        box-shadow: 0 6px 16px rgba(0,0,0,.08);
+        background: #fff;
+        overflow: hidden;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .art-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .art-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(0,0,0,.14);
+      }
+      /* 段差 */
+      .art-card:nth-child(6n+2){ margin-top: 10px; }
+      .art-card:nth-child(6n+3){ margin-top: 22px; }
+      .art-card:nth-child(6n+4){ margin-top: -6px; }
+      .art-card:nth-child(6n+5){ margin-top: 16px; }
+      .art-card:nth-child(6n+6){ margin-top: -12px; }
+
+      @media (max-width: 900px){
+        .art-card { flex: 0 1 calc(33.333% - 14px); } /* タブレット3列 */
+      }
+      @media (max-width: 600px){
+        .art-card { flex: 0 1 calc(50% - 14px); }     /* スマホ2列 */
       }
     </style>
 
-    <!-- ===== 1時間ごとに画像を切替 ===== -->
+    <!-- ===== JS：1時間ごとに画像を切替（pos1～pos7） ===== -->
     <script type="module">
-      // public/images に pos1.jpg ～ pos7.jpg を置く前提
-      const images = [
+      const slideImages = [
         "/images/pos1.jpg",
         "/images/pos2.jpg",
         "/images/pos3.jpg",
@@ -240,19 +273,49 @@ import "../../styles/style.css";
         "/images/pos6.jpg",
         "/images/pos7.jpg",
       ];
-
       function updateSlideshow() {
         const el = document.getElementById("slideshow-1");
         if (!el) return;
-        const hour = new Date().getHours();     // 0–23
-        const idx  = hour % images.length;      // 時間に応じて選択
-        el.src = images[idx];
+        const hour = new Date().getHours();
+        const idx  = hour % slideImages.length;
+        el.src = slideImages[idx];
         el.loading = "lazy";
         el.decoding = "async";
       }
+      updateSlideshow();
+      setInterval(updateSlideshow, 60 * 60 * 1000);
+    </script>
 
-      updateSlideshow();                        // 初回
-      setInterval(updateSlideshow, 60 * 60 * 1000); // 1時間ごとに更新
+    <!-- ===== JS：ARTギャラリーを生成（1-1～1-20） ===== -->
+    <script type="module">
+      const BASE = "/images/3ポスター/art/";
+      const FILES = Array.from({length:20}, (_,i)=>`1-${i+1}.jpg`);
+
+      function rotate(list){
+        const h = new Date().getHours();
+        const k = h % list.length;
+        return list.slice(k).concat(list.slice(0,k));
+      }
+
+      function mountArt(){
+        const wall = document.getElementById("artWall");
+        if(!wall) return;
+        wall.innerHTML = "";
+        const ordered = rotate(FILES);
+        for(const name of ordered){
+          const card = document.createElement("div");
+          card.className = "art-card";
+          const img = document.createElement("img");
+          img.src = BASE + name;    // 例：/images/3ポスター/art/1-1.jpg
+          img.alt = "アート";
+          img.loading = "lazy";
+          img.decoding = "async";
+          card.appendChild(img);
+          wall.appendChild(card);
+        }
+      }
+      mountArt();
+      setInterval(mountArt, 60*60*1000); // 1時間ごとに並び替え
     </script>
 
     <!-- ===== フェードイン ===== -->
