@@ -138,14 +138,19 @@ const ART_BASE = "/images/art/";
       .slides{max-width:var(--max);margin:2rem auto;padding:0 1rem;}
       .slides h2{font-size:1.22rem;color:var(--brand-blue);margin-bottom:1rem;}
       .hero-frame{
-        width:100%;max-width:100%;
-        /* 既定は横長（3:2）。縦長ならJSで 2:3 に切替 */
+        width:100%;
+        max-width:600px;
+        margin:0 auto;
         aspect-ratio:3/2;
         border-radius:12px;overflow:hidden;
         box-shadow:var(--shadow-sm);background:#f2f6ff;
       }
       .hero-frame.is-portrait { aspect-ratio: 2/3; }
-      .hero-img{width:100%;height:100%;display:block;object-fit:contain;background:#f2f6ff;}
+      .hero-img{
+        width:100%;height:100%;display:block;
+        object-fit:cover;
+        background:#f2f6ff;
+      }
 
       /* ===== ART ギャラリー ===== */
       .slides-title{font-size:1.22rem;color:var(--brand-blue);margin-bottom:1rem;}
@@ -239,54 +244,10 @@ const ART_BASE = "/images/art/";
         </article>
       </section>
 
-      <!-- ===== 2枚セット オファー ===== -->
-      <section id="offer" class="offer-wrap fade-up" aria-label="2枚セットでお得！選べるモダンアートポスター">
-        <div class="offer-card">
-          <h2 class="offer-title">【2枚セットでお得！選べるモダンアートポスター】</h2>
-          <p class="price">
-            <span class="price-now">今なら <strong>2枚セット 4,680円</strong> <small>（送料無料）</small></span>
-            <span class="price-note">通常1枚3,450円のA4アートポスター／初めての方にもぴったり</span>
-          </p>
-          <p class="muted">※ポスターのみの販売。額や装飾品は含まれません。</p>
-
-          <div class="grid two">
-            <article class="panel soft">
-              <h3 class="panel-sub">◆ 選べる20種類のデザイン</h3>
-              <p>沖縄テイスト・モダンなど、おしゃれなデザインを多数ご用意。<br />お部屋の雰囲気に合わせて自由に組み合わせ可能です。</p>
-            </article>
-            <article class="panel soft">
-              <h3 class="panel-sub">◆ 高品質な仕上がり</h3>
-              <p>LINSLが厳選した高級紙＆高精細プリント。<br />多くのお客様から高評価をいただいています。</p>
-            </article>
-          </div>
-
-          <article class="panel soft">
-            <h3 class="panel-sub">◆ 飾りやすいA4サイズ</h3>
-            <ul class="bullet">
-              <li>1枚でコンパクトに</li>
-              <li>2枚でボリューム感をプラス</li>
-            </ul>
-            <p>初心者にも扱いやすく、どんなお部屋にも取り入れやすいサイズです。</p>
-          </article>
-
-          <article class="panel">
-            <h3 class="panel-sub">【お申し込み方法】</h3>
-            <p>
-              LINE・メール・お電話にてご注文ください。<br />
-              お申し込み後、振込先をご連絡いたします。ご入金確認後に発送いたします。
-            </p>
-            <div class="contact-cta">
-              <a class="btn" href="https://lin.ee/56a0xBp" target="_blank" rel="noopener" aria-label="LINEで注文する">LINEで注文する</a>
-              <a class="btn ghost" href="mailto:sunabe@kyi.biglobe.e.jp" aria-label="メールで注文する">メールで注文する</a>
-              <a class="btn ghost" href="tel:090-1491-1515" aria-label="電話で注文する">電話で注文する</a>
-            </div>
-          </article>
-        </div>
-      </section>
 
       <!-- ===== 作例①：スライド（毎時間切替・切らずに表示） ===== -->
       <section class="slides slides-portrait">
-        <h2>ポスター作成例（毎時間変更します）</h2>
+  <h2>ポスター作成例（毎日変更します）</h2>
         <div class="hero-frame fade-up">
           <img
             id="slideshow-1"
@@ -300,14 +261,16 @@ const ART_BASE = "/images/art/";
         </div>
 
         <script type="module">
-          // ★ SLIDES をJSに埋め込むときは JSON.stringify する
-          const slideImages = JSON.parse('[ "/images/pos1.jpg", "/images/pos2.jpg", "/images/pos3.jpg", "/images/pos4.jpg", "/images/pos5.jpg", "/images/pos6.jpg", "/images/pos7.jpg" ]');
+          // ★ art/pos1.jpg〜pos7.jpgを使い、毎日切替
+          const slideImages = JSON.parse('[ "/images/art/pos1.jpg", "/images/art/pos2.jpg", "/images/art/pos3.jpg", "/images/art/pos4.jpg", "/images/art/pos5.jpg", "/images/art/pos6.jpg", "/images/art/pos7.jpg" ]');
           const imgEl = document.getElementById("slideshow-1");
           const frameEl = document.querySelector(".slides-portrait .hero-frame");
 
-          function pickByHour() {
-            const hour = new Date().getHours();
-            return slideImages[hour % slideImages.length] || imgEl?.src;
+          function pickByDay() {
+            const today = new Date();
+            // 1970/1/1からの日数でインデックスを決定
+            const days = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
+            return slideImages[days % slideImages.length] || imgEl?.src;
           }
 
           function setFrameAspect(src) {
@@ -323,7 +286,7 @@ const ART_BASE = "/images/art/";
 
           function applyOnce() {
             if (!imgEl) return;
-            const next = pickByHour();
+            const next = pickByDay();
             const loader = new Image();
             loader.onload = () => { setFrameAspect(next); imgEl.src = next; };
             loader.onerror = () => {
@@ -335,8 +298,49 @@ const ART_BASE = "/images/art/";
           }
 
           applyOnce();
-          setInterval(applyOnce, 60 * 60 * 1000);
+          setInterval(applyOnce, 24 * 60 * 60 * 1000); // 24時間ごと
         </script>
+      </section>
+
+      <!-- ===== 2枚セットキャンペーン案内（追加分） ===== -->
+      <section class="offer-wrap fade-up" aria-label="2枚セットでお得！選べるモダンアートポスター">
+        <div class="offer-card">
+          <h2 class="offer-title">【2枚セットでお得！選べるモダンアートポスター】</h2>
+          <p class="price">
+            <span class="price-now">今なら <strong>2枚セット 4,680円</strong> <small>（送料無料）</small></span><br>
+            <span class="price-note">通常1枚3,450円のA4アートポスター／初めてアートを飾る方にもぴったりのお試しセットです。</span>
+          </p>
+          <p class="muted">※ポスターのみの販売。額や装飾品は含まれません。</p>
+          <hr style="margin:1.2rem 0;">
+          <div class="grid two">
+            <article class="panel soft">
+              <h3 class="panel-sub">◆ 選べる20種類のデザイン</h3>
+              <p>沖縄テイスト・モダンなど、おしゃれなデザインを多数ご用意。<br>お部屋の雰囲気に合わせて自由に組み合わせ可能です。</p>
+            </article>
+            <article class="panel soft">
+              <h3 class="panel-sub">◆ 高品質な仕上がり</h3>
+              <p>LINSLが厳選した高級紙＆高精細プリント。<br>多くのお客様から高評価をいただいています。</p>
+            </article>
+          </div>
+          <article class="panel soft">
+            <h3 class="panel-sub">◆ 飾りやすいA4サイズ</h3>
+            <ul class="bullet">
+              <li>1枚でコンパクトに</li>
+              <li>2枚でボリューム感をプラス</li>
+            </ul>
+            <p>初心者にも扱いやすく、どんなお部屋にも取り入れやすいサイズです。</p>
+          </article>
+          <hr style="margin:1.2rem 0;">
+          <article class="panel">
+            <h3 class="panel-sub">【お申し込み方法】</h3>
+            <p>LINE・メール・お電話にてご注文ください。<br>お申し込み後、振込先をご連絡いたします。<br>ご入金確認後に発送いたします。</p>
+            <div class="contact-cta">
+              <a class="btn" href="https://lin.ee/56a0xBp" target="_blank" rel="noopener" aria-label="LINEで注文する">LINEで注文する</a>
+              <a class="btn ghost" href="mailto:sunabe@kyi.biglobe.e.jp" aria-label="メールで注文する">メールで注文する</a>
+              <a class="btn ghost" href="tel:090-1491-1515" aria-label="電話で注文する">電話で注文する</a>
+            </div>
+          </article>
+        </div>
       </section>
 
       <!-- ===== 作例②：ART ギャラリー（HTML+CSSのみ） ===== -->
