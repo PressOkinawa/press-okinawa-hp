@@ -3,20 +3,190 @@ import Header from "../../components/header.astro";
 import Footer from "../../components/footer.astro";
 import TodayScheduleImage from "../../components/TodayScheduleImage.astro";
 import "../../styles/style.css";
+
+const TITLE = "プレス沖縄｜ポスター";
+const DESC =
+  "沖縄発、世界基準の広告制作。ポスター/チラシ/パンフからWeb・SNS用デザインまで、企画〜印刷をワンストップでサポート。";
+const CANONICAL = "https://www.example.com/poster";
+const HERO = "/images/pos1.jpg"; // 初期表示想定（存在しない場合は自動で次へフォールバック）
+const SLIDES = [
+  "/images/pos1.jpg",
+  "/images/pos2.jpg",
+  "/images/pos3.jpg",
+  "/images/pos4.jpg",
+  "/images/pos5.jpg",
+  "/images/pos6.jpg",
+  "/images/pos7.jpg",
+];
+// ARTギャラリー（1-1 ～ 1-20）
+const ART_BASE = "/images/3ポスター/art/";
+const ART_FILES = Array.from({ length: 20 }, (_, i) => `${ART_BASE}1-${i + 1}.jpg`);
 ---
 
 <!doctype html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>プレス沖縄｜ポスター</title>
+    <title>{TITLE}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="沖縄印刷,名刺,めいし,北谷,ポスター,コマーシャル,プレス沖縄,印刷,砂辺"
-    />
-    <link rel="stylesheet" href="main-style.css" />
+    <meta name="description" content={DESC} />
+    <link rel="canonical" href={CANONICAL} />
+
+    <!-- OGP -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={TITLE} />
+    <meta property="og:description" content={DESC} />
+    <meta property="og:image" content={HERO} />
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- Preconnect（解析などをブロックしないためdeferも併用） -->
+    <link rel="preconnect" href="https://js.ptengine.jp" />
     <script src="https://js.ptengine.jp/55iy7etj.js" defer></script>
+
+    <!-- 主要CSS（外部がある場合はここで読み込み） -->
+    <link rel="stylesheet" href="main-style.css" />
+
+    <!-- JSON-LD（最小） -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "プレス沖縄",
+        "url": "https://www.example.com",
+        "description": "{DESC}",
+        "logo": "/favicon.ico"
+      }
+    </script>
+
+    <style>
+      :root{
+        --brand-blue:#0077ff;
+        --brand-cyan:#00d4ff;
+        --ink:#222; --ink2:#444;
+        --bg-soft:#f7faff; --bg-white:#fff;
+        --r:14px; --r-lg:18px;
+        --shadow-sm:0 6px 18px rgba(0,0,0,.05);
+        --shadow-md:0 10px 28px rgba(0,0,0,.08);
+        --shadow-lg:0 12px 32px rgba(0,0,0,.14);
+        --max:1100px;
+      }
+
+      main{padding-bottom:6.5rem;}
+
+      .container{max-width:var(--max);margin:0 auto;padding:0 1rem;}
+
+      .fade-up{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease;}
+      .fade-up.show{opacity:1;transform:translateY(0);}
+
+      /* ===== コピー＆CTA ===== */
+      .copy-wrap{max-width:var(--max);margin:2.4rem auto 1.4rem;padding:0 1rem;}
+      .copy-card{
+        background:var(--bg-white);
+        border-radius:var(--r-lg);
+        padding:2rem 1.6rem;
+        border-left:6px solid var(--brand-blue);
+        box-shadow:var(--shadow-md);
+      }
+      .copy-title{font-size:1.6rem;margin:0 0 .35rem;color:var(--brand-blue);}
+      .copy-lead{color:var(--ink2);margin:0 0 .5rem;}
+      .copy-tag{color:var(--ink);font-weight:600;}
+
+      .grid.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem;}
+      @media (max-width:800px){.grid.two{grid-template-columns:1fr;}}      
+
+      .panel{
+        background:var(--bg-white);
+        border-radius:var(--r);
+        padding:1.4rem 1.2rem;
+        box-shadow:var(--shadow-sm);
+      }
+      .panel.soft{box-shadow:0 6px 16px rgba(0,0,0,.04);}
+      .panel-title{
+        font-size:1.15rem;margin:.1rem 0 .8rem;color:var(--brand-blue);
+        border-bottom:2px solid #e9f2ff;padding-bottom:.3rem;
+      }
+      .panel-sub{font-size:1.05rem;margin:.2rem 0 .45rem;color:var(--ink);}
+      .bullet{margin:0;padding-left:1.2rem;line-height:1.9;color:var(--ink2);}
+      .bullet.cols{columns:2;column-gap:2rem;}
+      .bullet li{break-inside:avoid;margin:0 0 .2rem;}
+
+      /* ===== オファー ===== */
+      .offer-wrap{max-width:var(--max);margin:2rem auto;padding:0 1rem;}
+      .offer-card{
+        background:var(--bg-white);
+        border-radius:var(--r-lg);
+        padding:1.6rem 1.2rem;
+        box-shadow:var(--shadow-md);
+        border-left:6px solid var(--brand-blue);
+      }
+      .offer-title{margin:0 0 .4rem;font-size:1.35rem;color:var(--brand-blue);}
+      .price{display:flex;flex-direction:column;gap:.2rem;margin:.3rem 0 .2rem;}
+      .price-now{font-size:1.08rem;font-weight:700;}
+      .price-note{color:var(--ink2);font-size:.95rem;}
+      .muted{color:#666;font-size:.92rem;}
+      .contact-cta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem;}
+      .btn{
+        display:inline-block;padding:.85rem 1.2rem;border-radius:999px;font-weight:700;text-decoration:none;
+        color:#fff;background:linear-gradient(90deg,var(--brand-blue),var(--brand-cyan));
+        box-shadow:0 8px 24px rgba(0,0,0,.12);
+      }
+      .btn.ghost{
+        color:var(--brand-blue);background:transparent;border:2px solid #d7e8ff;box-shadow:none;
+      }
+
+      /* ===== 固定フローティング予約ボタン ===== */
+      .fixed-button{
+        position:fixed;right:1rem;bottom:1rem;z-index:50;
+        background:linear-gradient(90deg,var(--brand-blue),var(--brand-cyan));
+        color:#fff;text-decoration:none;padding:.9rem 1.2rem;border-radius:999px;
+        box-shadow:0 8px 24px rgba(0,0,0,.18);font-weight:700;
+      }
+
+      /* ===== スライド（CLS対策：サイズ予約） ===== */
+      .slides{max-width:var(--max);margin:2rem auto;padding:0 1rem;}
+      .slides h2{font-size:1.22rem;color:var(--brand-blue);margin-bottom:1rem;}
+      .hero-frame{
+        width:100%;
+        max-width:100%;
+        aspect-ratio:3/2; /* 画像比率の違いでも領域を確保してガタつき防止 */
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:var(--shadow-sm);
+        background:#f2f6ff;
+      }
+      .hero-img{
+        width:100%;height:100%;object-fit:cover;display:block;
+      }
+
+      /* ===== ART ギャラリー ===== */
+      .slides-title{font-size:1.22rem;color:var(--brand-blue);margin-bottom:1rem;}
+      .art-wall{
+        max-width:var(--max);margin:0 auto;
+        display:grid;gap:14px;
+        grid-template-columns:repeat(4,1fr);
+      }
+      @media (max-width:900px){ .art-wall{grid-template-columns:repeat(3,1fr);} }
+      @media (max-width:600px){ .art-wall{grid-template-columns:repeat(2,1fr);} }
+
+      .art-card{
+        border-radius:12px;background:#fff;overflow:hidden;
+        box-shadow:var(--shadow-sm);
+        transition:transform .2s ease, box-shadow .2s ease;
+      }
+      .art-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+      .art-img{
+        width:100%;height:100%;
+        display:block;
+        aspect-ratio:4/5;      /* タイルを統一の見た目に */
+        object-fit:cover;      /* 余白/歪みを防ぎ、見栄え優先 */
+      }
+
+      /* アニメ */
+      @media (prefers-reduced-motion: reduce){
+        .fade-up{transition:none;}
+        .art-card{transition:none;}
+      }
+    </style>
   </head>
 
   <body>
@@ -34,7 +204,8 @@ import "../../styles/style.css";
         <div class="grid two">
           <article class="panel">
             <h2 class="panel-title">🔶 企業理念</h2>
-            <p>全てが手作業。世界トップの作品づくりを目指します。<br />
+            <p>
+              全てが手作業。世界トップの作品づくりを目指します。<br />
               20万点以上の所蔵作品と実績を活かし、<br />
               「広告で世界を動かす」を使命に、沖縄から世界へ。<br />
               一つひとつ丁寧に、「伝わる広告」を制作します。
@@ -56,11 +227,11 @@ import "../../styles/style.css";
           <h2 class="panel-title">🔶 サービス紹介</h2>
           <div class="grid two">
             <div class="service">
-              <h3>▶ 紙媒体（ポスター／チラシ／パンフレット）</h3>
+              <h3 class="panel-sub">▶ 紙媒体（ポスター／チラシ／パンフレット）</h3>
               <p>企画・デザイン・印刷まですべて対応。<br />沖縄全域対応、柔軟＆スピーディに対応します。</p>
             </div>
             <div class="service">
-              <h3>▶ Web・SNS用広告</h3>
+              <h3 class="panel-sub">▶ Web・SNS用広告</h3>
               <p>デザインから素材制作・撮影までまとめてお任せ。<br />SNS・キャンペーンにも対応。</p>
             </div>
           </div>
@@ -80,10 +251,10 @@ import "../../styles/style.css";
 
         <article class="panel">
           <h2 class="panel-title">🔶 ポスター制作の流れ</h2>
-          <ol class="steps">
-            <li><span>① 企画・準備：</span>目的設定、情報整理、方向性決定</li>
-            <li><span>② デザイン制作：</span>ラフ作成、レイアウト、配色・フォント選定</li>
-            <li><span>③ 仕上げ・出力：</span>校正・修正、印刷、デジタル出力対応</li>
+          <ol class="bullet">
+            <li><strong>① 企画・準備：</strong> 目的設定、情報整理、方向性決定</li>
+            <li><strong>② デザイン制作：</strong> ラフ作成、レイアウト、配色・フォント選定</li>
+            <li><strong>③ 仕上げ・出力：</strong> 校正・修正、印刷、デジタル出力対応</li>
           </ol>
         </article>
       </section>
@@ -91,14 +262,12 @@ import "../../styles/style.css";
       <!-- ===== 2枚セット オファー ===== -->
       <section id="offer" class="offer-wrap fade-up" aria-label="2枚セットでお得！選べるモダンアートポスター">
         <div class="offer-card">
-          <div class="offer-head">
-            <h2 class="offer-title">【2枚セットでお得！選べるモダンアートポスター】</h2>
-            <p class="price">
-              <span class="price-now">今なら <strong>2枚セット 4,680円</strong> <small>（送料無料）</small></span>
-              <span class="price-note">通常1枚3,450円のA4アートポスター／初めての方にもぴったり</span>
-            </p>
-            <p class="muted">※ポスターのみの販売。額や装飾品は含まれません。</p>
-          </div>
+          <h2 class="offer-title">【2枚セットでお得！選べるモダンアートポスター】</h2>
+          <p class="price">
+            <span class="price-now">今なら <strong>2枚セット 4,680円</strong> <small>（送料無料）</small></span>
+            <span class="price-note">通常1枚3,450円のA4アートポスター／初めての方にもぴったり</span>
+          </p>
+          <p class="muted">※ポスターのみの販売。額や装飾品は含まれません。</p>
 
           <div class="grid two">
             <article class="panel soft">
@@ -122,7 +291,10 @@ import "../../styles/style.css";
 
           <article class="panel">
             <h3 class="panel-sub">【お申し込み方法】</h3>
-            <p>LINE・メール・お電話にてご注文ください。<br />お申し込み後、振込先をご連絡いたします。ご入金確認後に発送いたします。</p>
+            <p>
+              LINE・メール・お電話にてご注文ください。<br />
+              お申し込み後、振込先をご連絡いたします。ご入金確認後に発送いたします。
+            </p>
             <div class="contact-cta">
               <a class="btn" href="https://lin.ee/56a0xBp" target="_blank" rel="noopener" aria-label="LINEで注文する">LINEで注文する</a>
               <a class="btn ghost" href="mailto:sunabe@kyi.biglobe.e.jp" aria-label="メールで注文する">メールで注文する</a>
@@ -133,15 +305,117 @@ import "../../styles/style.css";
       </section>
 
       <!-- ===== 作例①：毎時切替の単枚スライド ===== -->
-      <section class="slides">
-        <h2>ポスター作成例（毎時間変更します）</h2>
-        <img id="slideshow-1" class="responsive-img fade-up" alt="ポスター作例" />
-      </section>
+<!-- ===== 縦長対応版：ポスター作成例（そのまま差し替え） ===== -->
+<section class="slides slides-portrait">
+  <h2>ポスター作成例（毎時間変更します）</h2>
 
-      <!-- ===== 作例②：ART ギャラリー（縮小サムネイル＋段差） ===== -->
+  <div class="hero-frame fade-up is-landscape contain">
+    <!-- CLS対策：枠サイズはJSで縦横を判定して 3:2 / 2:3 を切替、画像は切らずに表示 -->
+    <img
+      id="slideshow-1"
+      class="hero-img"
+      src={HERO}
+      alt="ポスター作例"
+      decoding="async"
+      loading="lazy"
+      sizes="(max-width: 600px) 96vw, (max-width: 1100px) 96vw, 1100px"
+    />
+  </div>
+
+  <style>
+    /* セクション内に閉じたスコープ */
+    .slides-portrait .hero-frame{
+      width:100%;
+      max-width:100%;
+      /* 既定は横長想定（3:2）。縦画像ならJSで .is-portrait を付けて 2:3 に変更 */
+      aspect-ratio: 3 / 2;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+      background:#f2f6ff;
+    }
+    .slides-portrait .hero-frame.is-portrait { aspect-ratio: 2 / 3; }
+    .slides-portrait .hero-frame.is-landscape { aspect-ratio: 3 / 2; }
+
+    /* 「絶対に切らない」＝ contain を既定に */
+    .slides-portrait .hero-frame.contain .hero-img{
+      object-fit: contain;
+      background:#f2f6ff;
+    }
+
+    .slides-portrait .hero-img{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+  </style>
+
+  <script type="module">
+    // Astro のフロントマター変数 SLIDES をそのまま利用
+    const slideImages = {JSON.stringify(SLIDES)};
+    const imgEl = document.getElementById("slideshow-1");
+    const frameEl = document.querySelector(".slides-portrait .hero-frame");
+
+    function pickByHour() {
+      const hour = new Date().getHours();
+      return slideImages[hour % slideImages.length] || imgEl?.src;
+    }
+
+    function setFrameAspect(src) {
+      if (!frameEl || !src) return;
+      const probe = new Image();
+      probe.onload = () => {
+        const portrait = probe.naturalHeight >= probe.naturalWidth;
+        frameEl.classList.toggle("is-portrait", portrait);
+        frameEl.classList.toggle("is-landscape", !portrait);
+      };
+      probe.decoding = "async";
+      probe.src = src;
+    }
+
+    function applyOnce() {
+      if (!imgEl) return;
+      const next = pickByHour();
+
+      const loader = new Image();
+      loader.onload = () => {
+        setFrameAspect(next);
+        imgEl.src = next;
+      };
+      loader.onerror = () => {
+        const fallback = slideImages.find(s => s !== next) || imgEl.src;
+        setFrameAspect(fallback);
+        imgEl.src = fallback;
+      };
+      loader.decoding = "async";
+      loader.src = next;
+    }
+
+    applyOnce();
+    // 1時間ごとに入替（必要なければ下行を削除）
+    setInterval(applyOnce, 60 * 60 * 1000);
+  </script>
+</section>
+
+
+      <!-- ===== 作例②：ART ギャラリー ===== -->
       <section class="slides fade-up" aria-label="アートギャラリー">
         <h2 class="slides-title">ART ギャラリー</h2>
-        <div id="artWall" class="art-wall"></div>
+        <div id="artWall" class="art-wall">
+          {ART_FILES.map((src) => (
+            <figure class="art-card">
+              <img
+                class="art-img"
+                src={src}
+                alt="アートポスター"
+                decoding="async"
+                loading="lazy"
+                sizes="(max-width:600px) 48vw, (max-width:900px) 31vw, 24vw"
+                onerror="this.dataset.err?'':(this.dataset.err=1,this.src='/images/fallback.jpg')"
+              />
+            </figure>
+          ))}
+        </div>
       </section>
     </main>
 
@@ -151,181 +425,43 @@ import "../../styles/style.css";
     <Footer />
     <TodayScheduleImage />
 
-    <!-- ===== スタイル ===== -->
-    <style>
-      :root {
-        --brand-blue: #0077ff;
-        --brand-cyan: #00d4ff;
-        --ink: #222;
-        --ink2: #444;
-        --bg-soft: #f7faff;
-        --bg-white: #fff;
-      }
-
-      main { padding-bottom: 6rem; }
-      .responsive-img { max-width: 100%; height: auto; display: inline-block; border-radius: 8px; }
-      .slides { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
-      .slides h2, .slides-title { font-size: 1.3rem; color: var(--brand-blue); margin-bottom: 1rem; }
-
-      /* コピーセクション */
-      .copy-wrap { max-width: 1100px; margin: 2.5rem auto 1.5rem; padding: 0 1rem; }
-      .copy-card {
-        background: var(--bg-white); border-radius: 16px; padding: 2rem 1.6rem;
-        border-left: 6px solid var(--brand-blue);
-        box-shadow: 0 10px 28px rgba(0,0,0,.06);
-      }
-      .copy-title { font-size: 1.6rem; margin: 0 0 .3rem; color: var(--brand-blue); }
-      .copy-lead { color: var(--ink2); margin: 0 0 .5rem; }
-      .copy-tag { color: var(--ink); font-weight: 600; }
-
-      /* 汎用 */
-      .grid.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.2rem; }
-      .panel { background: var(--bg-white); border-radius: 14px; padding: 1.4rem 1.2rem; box-shadow: 0 8px 24px rgba(0,0,0,.05); }
-      .panel.soft { box-shadow: 0 6px 18px rgba(0,0,0,.04); }
-      .panel-title { font-size: 1.2rem; margin: 0 0 .8rem; color: var(--brand-blue); border-bottom: 2px solid #e9f2ff; padding-bottom: .3rem; }
-      .panel-sub { font-size: 1.05rem; margin: .2rem 0 .4rem; color: var(--ink); }
-      .bullet { margin: 0; padding-left: 1.2rem; line-height: 1.9; color: var(--ink2); }
-      .bullet.cols { columns: 2; column-gap: 2rem; }
-      .bullet li { break-inside: avoid; margin: 0 0 .2rem; }
-
-      /* オファー */
-      .offer-wrap { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
-      .offer-card { background: var(--bg-white); border-radius: 18px; padding: 1.6rem 1.2rem; box-shadow: 0 12px 28px rgba(0,0,0,.06); border-left: 6px solid var(--brand-blue); }
-      .offer-head { margin-bottom: .6rem; }
-      .offer-title { margin: 0 0 .4rem; font-size: 1.4rem; color: var(--brand-blue); }
-      .price { display: flex; flex-direction: column; gap: .2rem; margin: .3rem 0 .2rem; }
-      .price-now { font-size: 1.1rem; font-weight: 700; }
-      .price-note { color: var(--ink2); font-size: .95rem; }
-      .muted { color: #666; font-size: .92rem; }
-
-      .contact-cta { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .6rem; }
-      .btn {
-        display: inline-block; padding: .85rem 1.2rem; border-radius: 999px; font-weight: 700; text-decoration: none;
-        color: #fff; background: linear-gradient(90deg, var(--brand-blue), var(--brand-cyan));
-        box-shadow: 0 8px 24px rgba(0,0,0,.12);
-      }
-      .btn.ghost {
-        color: var(--brand-blue); background: transparent; border: 2px solid #d7e8ff;
-        box-shadow: none;
-      }
-
-      /* 予約ボタン */
-      .fixed-button {
-        position: fixed; right: 1rem; bottom: 1rem;
-        background: linear-gradient(90deg, var(--brand-blue), var(--brand-cyan));
-        color: #fff; text-decoration: none; padding: .9rem 1.2rem; border-radius: 999px;
-        box-shadow: 0 8px 24px rgba(0,0,0,.18); font-weight: 700;
-      }
-
-      .fade-up { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
-      .fade-up.show { opacity: 1; transform: translateY(0); }
-
-      /* ===== ART ギャラリー（縮小サムネイル＋段差） ===== */
-      .art-wall {
-        max-width: 1100px;
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-        justify-content: center;
-      }
-      .art-card {
-        flex: 0 1 calc(25% - 14px);   /* PCで4列 */
-        max-width: 260px;             /* はみ出し防止 */
-        border-radius: 12px;
-        box-shadow: 0 6px 16px rgba(0,0,0,.08);
-        background: #fff;
-        overflow: hidden;
-        transition: transform .2s ease, box-shadow .2s ease;
-      }
-      .art-card img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-      .art-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 28px rgba(0,0,0,.14);
-      }
-      /* 段差 */
-      .art-card:nth-child(6n+2){ margin-top: 10px; }
-      .art-card:nth-child(6n+3){ margin-top: 22px; }
-      .art-card:nth-child(6n+4){ margin-top: -6px; }
-      .art-card:nth-child(6n+5){ margin-top: 16px; }
-      .art-card:nth-child(6n+6){ margin-top: -12px; }
-
-      @media (max-width: 900px){
-        .art-card { flex: 0 1 calc(33.333% - 14px); } /* タブレット3列 */
-      }
-      @media (max-width: 600px){
-        .art-card { flex: 0 1 calc(50% - 14px); }     /* スマホ2列 */
-      }
-    </style>
-
-    <!-- ===== JS：1時間ごとに画像を切替（pos1～pos7） ===== -->
-    <script type="module">
-      const slideImages = [
-        "/images/pos1.jpg",
-        "/images/pos2.jpg",
-        "/images/pos3.jpg",
-        "/images/pos4.jpg",
-        "/images/pos5.jpg",
-        "/images/pos6.jpg",
-        "/images/pos7.jpg",
-      ];
-      function updateSlideshow() {
-        const el = document.getElementById("slideshow-1");
-        if (!el) return;
-        const hour = new Date().getHours();
-        const idx  = hour % slideImages.length;
-        el.src = slideImages[idx];
-        el.loading = "lazy";
-        el.decoding = "async";
-      }
-      updateSlideshow();
-      setInterval(updateSlideshow, 60 * 60 * 1000);
-    </script>
-
-    <!-- ===== JS：ARTギャラリーを生成（1-1～1-20） ===== -->
-    <script type="module">
-      const BASE = "/images/3ポスター/art/";
-      const FILES = Array.from({length:20}, (_,i)=>`1-${i+1}.jpg`);
-
-      function rotate(list){
-        const h = new Date().getHours();
-        const k = h % list.length;
-        return list.slice(k).concat(list.slice(0,k));
-      }
-
-      function mountArt(){
-        const wall = document.getElementById("artWall");
-        if(!wall) return;
-        wall.innerHTML = "";
-        const ordered = rotate(FILES);
-        for(const name of ordered){
-          const card = document.createElement("div");
-          card.className = "art-card";
-          const img = document.createElement("img");
-          img.src = BASE + name;    // 例：/images/3ポスター/art/1-1.jpg
-          img.alt = "アート";
-          img.loading = "lazy";
-          img.decoding = "async";
-          card.appendChild(img);
-          wall.appendChild(card);
-        }
-      }
-      mountArt();
-      setInterval(mountArt, 60*60*1000); // 1時間ごとに並び替え
-    </script>
-
-    <!-- ===== フェードイン ===== -->
+    <!-- ===== スクロールフェード ===== -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("show"); });
+        const io = new IntersectionObserver((es)=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("show")),{
+          rootMargin:"-10% 0px",
+          threshold:0
         });
-        document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+        document.querySelectorAll(".fade-up").forEach(el=>io.observe(el));
       });
+    </script>
+
+    <!-- ===== JS：スライド（1時間ごとに最適1枚へ） ===== -->
+    <script type="module">
+      const slideImages = {SLIDES};
+      const el = document.getElementById("slideshow-1");
+
+      function pick() {
+        const hour = new Date().getHours();
+        return slideImages[hour % slideImages.length];
+      }
+
+      function apply() {
+        if (!el) return;
+        const src = pick();
+        // 画像が壊れていたら次善にフォールバック
+        const img = new Image();
+        img.onload = () => { el.src = src; };
+        img.onerror = () => {
+          const alt = slideImages.find(s => s !== src) || el.src;
+          el.src = alt;
+        };
+        img.decoding = "async";
+        img.src = src;
+      }
+
+      apply();
+      setInterval(apply, 60 * 60 * 1000);
     </script>
   </body>
 </html>
