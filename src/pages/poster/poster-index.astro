@@ -8,7 +8,9 @@ const TITLE = "プレス沖縄｜ポスター";
 const DESC =
   "沖縄発、世界基準の広告制作。ポスター/チラシ/パンフからWeb・SNS用デザインまで、企画〜印刷をワンストップでサポート。";
 const CANONICAL = "https://www.example.com/poster";
-const HERO = "/images/pos1.jpg"; // 初期表示想定（存在しない場合は自動で次へフォールバック）
+
+// ★ 画像は /public 配下にある想定です（例：public/images/...）
+const HERO = "/images/pos1.jpg";
 const SLIDES = [
   "/images/pos1.jpg",
   "/images/pos2.jpg",
@@ -18,9 +20,9 @@ const SLIDES = [
   "/images/pos6.jpg",
   "/images/pos7.jpg",
 ];
-// ARTギャラリー（1-1 ～ 1-20）
-const ART_BASE = "/images/3ポスター/art/";
-const ART_FILES = Array.from({ length: 20 }, (_, i) => `${ART_BASE}1-${i + 1}.jpg`);
+
+// ★ ARTは /public/images/art/ に修正
+const ART_BASE = "/images/art/";
 ---
 
 <!doctype html>
@@ -39,11 +41,11 @@ const ART_FILES = Array.from({ length: 20 }, (_, i) => `${ART_BASE}1-${i + 1}.jp
     <meta property="og:image" content={HERO} />
     <meta property="og:locale" content="ja_JP" />
 
-    <!-- Preconnect（解析などをブロックしないためdeferも併用） -->
+    <!-- 計測（任意） -->
     <link rel="preconnect" href="https://js.ptengine.jp" />
     <script src="https://js.ptengine.jp/55iy7etj.js" defer></script>
 
-    <!-- 主要CSS（外部がある場合はここで読み込み） -->
+    <!-- 主要CSS -->
     <link rel="stylesheet" href="main-style.css" />
 
     <!-- JSON-LD（最小） -->
@@ -72,19 +74,15 @@ const ART_FILES = Array.from({ length: 20 }, (_, i) => `${ART_BASE}1-${i + 1}.jp
       }
 
       main{padding-bottom:6.5rem;}
-
       .container{max-width:var(--max);margin:0 auto;padding:0 1rem;}
-
       .fade-up{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease;}
       .fade-up.show{opacity:1;transform:translateY(0);}
 
       /* ===== コピー＆CTA ===== */
       .copy-wrap{max-width:var(--max);margin:2.4rem auto 1.4rem;padding:0 1rem;}
       .copy-card{
-        background:var(--bg-white);
-        border-radius:var(--r-lg);
-        padding:2rem 1.6rem;
-        border-left:6px solid var(--brand-blue);
+        background:var(--bg-white);border-radius:var(--r-lg);
+        padding:2rem 1.6rem;border-left:6px solid var(--brand-blue);
         box-shadow:var(--shadow-md);
       }
       .copy-title{font-size:1.6rem;margin:0 0 .35rem;color:var(--brand-blue);}
@@ -92,13 +90,11 @@ const ART_FILES = Array.from({ length: 20 }, (_, i) => `${ART_BASE}1-${i + 1}.jp
       .copy-tag{color:var(--ink);font-weight:600;}
 
       .grid.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem;}
-      @media (max-width:800px){.grid.two{grid-template-columns:1fr;}}      
+      @media (max-width:800px){.grid.two{grid-template-columns:1fr;}}
 
       .panel{
-        background:var(--bg-white);
-        border-radius:var(--r);
-        padding:1.4rem 1.2rem;
-        box-shadow:var(--shadow-sm);
+        background:var(--bg-white);border-radius:var(--r);
+        padding:1.4rem 1.2rem;box-shadow:var(--shadow-sm);
       }
       .panel.soft{box-shadow:0 6px 16px rgba(0,0,0,.04);}
       .panel-title{
@@ -113,10 +109,8 @@ const ART_FILES = Array.from({ length: 20 }, (_, i) => `${ART_BASE}1-${i + 1}.jp
       /* ===== オファー ===== */
       .offer-wrap{max-width:var(--max);margin:2rem auto;padding:0 1rem;}
       .offer-card{
-        background:var(--bg-white);
-        border-radius:var(--r-lg);
-        padding:1.6rem 1.2rem;
-        box-shadow:var(--shadow-md);
+        background:var(--bg-white);border-radius:var(--r-lg);
+        padding:1.6rem 1.2rem;box-shadow:var(--shadow-md);
         border-left:6px solid var(--brand-blue);
       }
       .offer-title{margin:0 0 .4rem;font-size:1.35rem;color:var(--brand-blue);}
@@ -130,9 +124,7 @@ const ART_FILES = Array.from({ length: 20 }, (_, i) => `${ART_BASE}1-${i + 1}.jp
         color:#fff;background:linear-gradient(90deg,var(--brand-blue),var(--brand-cyan));
         box-shadow:0 8px 24px rgba(0,0,0,.12);
       }
-      .btn.ghost{
-        color:var(--brand-blue);background:transparent;border:2px solid #d7e8ff;box-shadow:none;
-      }
+      .btn.ghost{color:var(--brand-blue);background:transparent;border:2px solid #d7e8ff;box-shadow:none;}
 
       /* ===== 固定フローティング予約ボタン ===== */
       .fixed-button{
@@ -146,42 +138,30 @@ const ART_FILES = Array.from({ length: 20 }, (_, i) => `${ART_BASE}1-${i + 1}.jp
       .slides{max-width:var(--max);margin:2rem auto;padding:0 1rem;}
       .slides h2{font-size:1.22rem;color:var(--brand-blue);margin-bottom:1rem;}
       .hero-frame{
-        width:100%;
-        max-width:100%;
-        aspect-ratio:3/2; /* 画像比率の違いでも領域を確保してガタつき防止 */
-        border-radius:12px;
-        overflow:hidden;
-        box-shadow:var(--shadow-sm);
-        background:#f2f6ff;
+        width:100%;max-width:100%;
+        /* 既定は横長（3:2）。縦長ならJSで 2:3 に切替 */
+        aspect-ratio:3/2;
+        border-radius:12px;overflow:hidden;
+        box-shadow:var(--shadow-sm);background:#f2f6ff;
       }
-      .hero-img{
-        width:100%;height:100%;object-fit:cover;display:block;
-      }
+      .hero-frame.is-portrait { aspect-ratio: 2/3; }
+      .hero-img{width:100%;height:100%;display:block;object-fit:contain;background:#f2f6ff;}
 
       /* ===== ART ギャラリー ===== */
       .slides-title{font-size:1.22rem;color:var(--brand-blue);margin-bottom:1rem;}
       .art-wall{
         max-width:var(--max);margin:0 auto;
-        display:grid;gap:14px;
-        grid-template-columns:repeat(4,1fr);
+        display:grid;gap:14px;grid-template-columns:repeat(4,1fr);
       }
       @media (max-width:900px){ .art-wall{grid-template-columns:repeat(3,1fr);} }
       @media (max-width:600px){ .art-wall{grid-template-columns:repeat(2,1fr);} }
-
       .art-card{
         border-radius:12px;background:#fff;overflow:hidden;
-        box-shadow:var(--shadow-sm);
-        transition:transform .2s ease, box-shadow .2s ease;
+        box-shadow:var(--shadow-sm);transition:transform .2s ease, box-shadow .2s ease;
       }
       .art-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
-      .art-img{
-        width:100%;height:100%;
-        display:block;
-        aspect-ratio:4/5;      /* タイルを統一の見た目に */
-        object-fit:cover;      /* 余白/歪みを防ぎ、見栄え優先 */
-      }
+      .art-img{width:100%;height:auto;display:block;}
 
-      /* アニメ */
       @media (prefers-reduced-motion: reduce){
         .fade-up{transition:none;}
         .art-card{transition:none;}
@@ -304,117 +284,82 @@ const ART_FILES = Array.from({ length: 20 }, (_, i) => `${ART_BASE}1-${i + 1}.jp
         </div>
       </section>
 
-      <!-- ===== 作例①：毎時切替の単枚スライド ===== -->
-<!-- ===== 縦長対応版：ポスター作成例（そのまま差し替え） ===== -->
-<section class="slides slides-portrait">
-  <h2>ポスター作成例（毎時間変更します）</h2>
+      <!-- ===== 作例①：スライド（毎時間切替・切らずに表示） ===== -->
+      <section class="slides slides-portrait">
+        <h2>ポスター作成例（毎時間変更します）</h2>
+        <div class="hero-frame fade-up">
+          <img
+            id="slideshow-1"
+            class="hero-img"
+            src={HERO}
+            alt="ポスター作例"
+            decoding="async"
+            loading="lazy"
+            sizes="(max-width: 600px) 96vw, (max-width: 1100px) 96vw, 1100px"
+          />
+        </div>
 
-  <div class="hero-frame fade-up is-landscape contain">
-    <!-- CLS対策：枠サイズはJSで縦横を判定して 3:2 / 2:3 を切替、画像は切らずに表示 -->
-    <img
-      id="slideshow-1"
-      class="hero-img"
-      src={HERO}
-      alt="ポスター作例"
-      decoding="async"
-      loading="lazy"
-      sizes="(max-width: 600px) 96vw, (max-width: 1100px) 96vw, 1100px"
-    />
-  </div>
+        <script type="module">
+          // ★ SLIDES をJSに埋め込むときは JSON.stringify する
+          const slideImages = JSON.parse('[ "/images/pos1.jpg", "/images/pos2.jpg", "/images/pos3.jpg", "/images/pos4.jpg", "/images/pos5.jpg", "/images/pos6.jpg", "/images/pos7.jpg" ]');
+          const imgEl = document.getElementById("slideshow-1");
+          const frameEl = document.querySelector(".slides-portrait .hero-frame");
 
-  <style>
-    /* セクション内に閉じたスコープ */
-    .slides-portrait .hero-frame{
-      width:100%;
-      max-width:100%;
-      /* 既定は横長想定（3:2）。縦画像ならJSで .is-portrait を付けて 2:3 に変更 */
-      aspect-ratio: 3 / 2;
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow:0 6px 18px rgba(0,0,0,.08);
-      background:#f2f6ff;
-    }
-    .slides-portrait .hero-frame.is-portrait { aspect-ratio: 2 / 3; }
-    .slides-portrait .hero-frame.is-landscape { aspect-ratio: 3 / 2; }
+          function pickByHour() {
+            const hour = new Date().getHours();
+            return slideImages[hour % slideImages.length] || imgEl?.src;
+          }
 
-    /* 「絶対に切らない」＝ contain を既定に */
-    .slides-portrait .hero-frame.contain .hero-img{
-      object-fit: contain;
-      background:#f2f6ff;
-    }
+          function setFrameAspect(src) {
+            if (!frameEl || !src) return;
+            const probe = new Image();
+            probe.onload = () => {
+              const portrait = probe.naturalHeight >= probe.naturalWidth;
+              frameEl.classList.toggle("is-portrait", portrait);
+            };
+            probe.decoding = "async";
+            probe.src = src;
+          }
 
-    .slides-portrait .hero-img{
-      width:100%;
-      height:100%;
-      display:block;
-    }
-  </style>
+          function applyOnce() {
+            if (!imgEl) return;
+            const next = pickByHour();
+            const loader = new Image();
+            loader.onload = () => { setFrameAspect(next); imgEl.src = next; };
+            loader.onerror = () => {
+              const fallback = slideImages.find(s => s !== next) || imgEl.src;
+              setFrameAspect(fallback); imgEl.src = fallback;
+            };
+            loader.decoding = "async";
+            loader.src = next;
+          }
 
-  <script type="module">
-    // Astro のフロントマター変数 SLIDES をそのまま利用
-    const slideImages = {SLIDES};
-    const imgEl = document.getElementById("slideshow-1");
-    const frameEl = document.querySelector(".slides-portrait .hero-frame");
+          applyOnce();
+          setInterval(applyOnce, 60 * 60 * 1000);
+        </script>
+      </section>
 
-    function pickByHour() {
-      const hour = new Date().getHours();
-      return slideImages[hour % slideImages.length] || imgEl?.src;
-    }
-
-    function setFrameAspect(src) {
-      if (!frameEl || !src) return;
-      const probe = new Image();
-      probe.onload = () => {
-        const portrait = probe.naturalHeight >= probe.naturalWidth;
-        frameEl.classList.toggle("is-portrait", portrait);
-        frameEl.classList.toggle("is-landscape", !portrait);
-      };
-      probe.decoding = "async";
-      probe.src = src;
-    }
-
-    function applyOnce() {
-      if (!imgEl) return;
-      const next = pickByHour();
-
-      const loader = new Image();
-      loader.onload = () => {
-        setFrameAspect(next);
-        imgEl.src = next;
-      };
-      loader.onerror = () => {
-        const fallback = slideImages.find(s => s !== next) || imgEl.src;
-        setFrameAspect(fallback);
-        imgEl.src = fallback;
-      };
-      loader.decoding = "async";
-      loader.src = next;
-    }
-
-    applyOnce();
-    // 1時間ごとに入替（必要なければ下行を削除）
-    setInterval(applyOnce, 60 * 60 * 1000);
-  </script>
-</section>
-
-
-      <!-- ===== 作例②：ART ギャラリー ===== -->
+      <!-- ===== 作例②：ART ギャラリー（HTML+CSSのみ） ===== -->
       <section class="slides fade-up" aria-label="アートギャラリー">
         <h2 class="slides-title">ART ギャラリー</h2>
-        <div id="artWall" class="art-wall">
-          {ART_FILES.map((src) => (
-            <figure class="art-card">
-              <img
-                class="art-img"
-                src={src}
-                alt="アートポスター"
-                decoding="async"
-                loading="lazy"
-                sizes="(max-width:600px) 48vw, (max-width:900px) 31vw, 24vw"
-                onerror="this.dataset.err?'':(this.dataset.err=1,this.src='/images/fallback.jpg')"
-              />
-            </figure>
-          ))}
+        <div class="art-wall">
+          <!-- 1〜20枚、必要数だけ残してOK。パスは /public/images/3ポスター/art に合わせてあります -->
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-1.jpg`}   loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-2.jpg`}   loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-3.jpg`}    loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-4.jpg`}    loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-9.jpg`}    loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-10.jpg`}  loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-11.jpg`}  loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-12.jpg`}  loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-13.jpg`}  loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-14.jpg`}  loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-15.jpg`}  loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-16.jpg`}  loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-17.jpg`}  loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-18.jpg`}  loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-19.jpg`}  loading="lazy" /></figure>
+          <figure class="art-card"><img class="art-img" src={`${ART_BASE}1-20.jpg`}  loading="lazy" /></figure>
         </div>
       </section>
     </main>
@@ -425,43 +370,14 @@ const ART_FILES = Array.from({ length: 20 }, (_, i) => `${ART_BASE}1-${i + 1}.jp
     <Footer />
     <TodayScheduleImage />
 
-    <!-- ===== スクロールフェード ===== -->
+    <!-- スクロールフェード -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const io = new IntersectionObserver((es)=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("show")),{
-          rootMargin:"-10% 0px",
-          threshold:0
+          rootMargin:"-10% 0px",threshold:0
         });
         document.querySelectorAll(".fade-up").forEach(el=>io.observe(el));
       });
-    </script>
-
-    <!-- ===== JS：スライド（1時間ごとに最適1枚へ） ===== -->
-    <script type="module">
-      const slideImages = {SLIDES};
-      const el = document.getElementById("slideshow-1");
-
-      function pick() {
-        const hour = new Date().getHours();
-        return slideImages[hour % slideImages.length];
-      }
-
-      function apply() {
-        if (!el) return;
-        const src = pick();
-        // 画像が壊れていたら次善にフォールバック
-        const img = new Image();
-        img.onload = () => { el.src = src; };
-        img.onerror = () => {
-          const alt = slideImages.find(s => s !== src) || el.src;
-          el.src = alt;
-        };
-        img.decoding = "async";
-        img.src = src;
-      }
-
-      apply();
-      setInterval(apply, 60 * 60 * 1000);
     </script>
   </body>
 </html>
