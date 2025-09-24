@@ -352,7 +352,7 @@ const ART_FILES = Array.from({ length: 20 }, (_, i) => `${ART_BASE}1-${i + 1}.jp
 
   <script type="module">
     // Astro のフロントマター変数 SLIDES をそのまま利用
-    const slideImages = {JSON.stringify(SLIDES)};
+    const slideImages = {SLIDES};
     const imgEl = document.getElementById("slideshow-1");
     const frameEl = document.querySelector(".slides-portrait .hero-frame");
 
