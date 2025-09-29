@@ -1,0 +1,211 @@
+---
+import Header from "../../components/header.astro";
+import Footer from "../../components/footer.astro";
+
+const TITLE = "プレス沖縄｜ポスター";
+const DESC =
+  "沖縄発、世界基準の広告制作。ポスター/チラシ/パンフからWeb・SNS用デザインまで、企画〜印刷をワンストップでサポート。";
+const CANONICAL = "https://www.example.com/poster";
+import "../../styles/style.css";
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{TITLE}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={DESC} />
+    <link rel="canonical" href={CANONICAL} />
+
+    <style>
+      :root {
+        --brand-blue:#0077ff;
+        --ink:#222;
+        --bg-soft:#f7faff;
+        --bg-white:#fff;
+        --r:14px;
+        --shadow-sm:0 6px 18px rgba(0,0,0,.05);
+        --max:900px;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        line-height: 1.7;
+        color: var(--ink);
+        background: var(--bg-soft);
+      }
+
+      main {
+        max-width: var(--max);
+        margin: 2rem auto;
+        padding: 0 1rem 4rem;
+      }
+
+      .copy-card {
+        background: var(--bg-white);
+        border-radius: var(--r);
+        padding: 2rem 1.4rem;
+        box-shadow: var(--shadow-sm);
+        border-left: 6px solid var(--brand-blue);
+      }
+
+      .copy-card p {
+        margin: 0;
+        white-space: pre-line;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+
+    <main>
+        <section class="copy-card" style="margin-top:2rem; text-align:center;">
+  <h2>今日のヒーリング</h2>
+  <img id="random-gif" src="" alt="ランダムGIF" style="max-width:400px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.1);" />
+</section>
+
+<script type="module">
+  // GIFファイルのリスト（/public/images/ 内に配置）
+  const gifs = [
+    "/images/kami1.gif",
+    "/images/kami2.gif",
+    "/images/kami3.gif",
+    "/images/kami4.gif",
+    "/images/kami5.gif",
+    "/images/kami6.gif",
+    "/images/kami7.gif",
+    "/images/kami8.gif",
+    "/images/kami9.gif",
+    "/images/kami10.gif",
+    "/images/kami11.gif",
+    "/images/kami12.gif",
+    "/images/kami13.gif",
+    "/images/kami14.gif",
+    "/images/kami15.gif",
+    "/images/kami16.gif",
+    "/images/kami17.gif",
+    "/images/kami18.gif",
+    "/images/kami19.gif",
+    "/images/kami20.gif",
+    "/images/kami21.gif",
+    "/images/kami22.gif",
+    "/images/kami23.gif",
+    "/images/kami24.gif",
+    "/images/kami25.gif",
+    "/images/kami26.gif",
+    "/images/kami27.gif",
+    "/images/kami28.gif",
+    "/images/kami29.gif",
+    "/images/kami30.gif",
+    "/images/kami31.gif",
+    "/images/kami32.gif",
+    "/images/kami33.gif",
+    "/images/kami34.gif",
+    "/images/kami35.gif",
+    "/images/kami36.gif"
+  ];
+
+  // ランダムに選択
+  const pick = gifs[Math.floor(Math.random() * gifs.length)];
+
+  // img タグに反映
+  const imgEl = document.getElementById("random-gif");
+  if (imgEl) {
+    imgEl.src = pick;
+  }
+</script>
+
+      <div class="copy-card">
+        <p>
+顧客を増やすための強力な味方
+名刺・ホームページのデザイン、困っていませんか？
+「何をどうデザインしていいかわからない」
+「素材がなくて、イメージが湧かない」
+そんなお悩みを多くの方が抱えています。
+私たちは50万点以上の豊富なデザイン素材を活用し、
+お客様の想いや目的に合わせた最適なデザインをご提供します。
+ご提供できる素材（一部ご紹介）
+・エッセー・文章素材
+　心に響くストーリーやキャッチコピーを、プロの手で。
+・動画素材
+　高品質な映像と音声で、視覚と聴覚に訴えるPRを実現。
+ご希望に合わせて内容をカスタマイズすることも可能です。
+必要であれば、名刺やホームページに直接使えるコピー文、デザイン案の提案もいたしますので、お気軽にご相談ください。
+        </p>
+      </div>
+
+      <section class="copy-card" style="margin-top:2rem;">
+  <h2>ヒーリングコンテンツ</h2>
+  <img id="healing-image" src="" alt="ヒーリング画像" style="max-width:400px;border-radius:12px;display:block;margin:1rem auto;" />
+  <audio id="healing-audio" controls style="display:block;margin:1rem auto;"></audio>
+</section>
+
+<script type="module">
+  // 画像と音声の候補
+  const images = [
+    "/images/healing/midorityank.jpg",
+    "/images/healing/mori２.jpg"
+  ];
+  const audios = [
+    "/images/healing/midoria.mp3",
+    "/images/healing/siroidoresu1.mp3"
+  ];
+
+  // ランダムで1つずつ選ぶ関数
+  function pickOne(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  // DOMに反映
+  const imgEl = document.getElementById("healing-image");
+  const audioEl = document.getElementById("healing-audio");
+
+  if (imgEl && audioEl) {
+    const chosenImg = pickOne(images);
+    const chosenAudio = pickOne(audios);
+
+    imgEl.src = chosenImg;
+    audioEl.src = chosenAudio;
+
+    // 自動再生（ユーザー操作必要なブラウザもある）
+    audioEl.play().catch(()=>{ /* ユーザー操作待ち */ });
+  }
+</script>
+
+
+      <div class="copy-card">
+        <p>
+ヒーリング記事がホームページにもたらす効果
+ヒーリング記事は、ユーザーの心に寄り添い、信頼と感動を提供するビジネス資産です。
+見た目だけでなく「心に響くコンテンツ」を取り入れることで、毎日訪れたくなるホームページを実現します。
+
+★ ヒーリング記事の主な効果
+1. 信頼と共感の獲得
+　心に寄り添う内容で、企業への信頼感と親近感を高めます。
+2. ブランドイメージの向上
+　「健康・癒しを大切にする姿勢」が伝わり、好印象を与えます。
+3. エンゲージメント向上
+　共感を呼ぶ記事は滞在時間を伸ばし、再訪問やSNSシェアを促進。
+4. 集客力アップ
+　「ストレス解消」「疲労回復」などの検索ニーズを捉え、新規顧客を獲得。
+5. SEO効果
+　質の高い記事は検索順位の上昇にも貢献。
+6. ニッチ分野での専門性確立
+　特定層に刺さるコンテンツで、強いブランドポジションを築けます。
+
+★私どものご提案
+1. 音楽付きヒーリングページの作成
+2. 季節・感情に合わせた紙芝居形式の連載記事
+3. 医師監修の健康・美容コラム
+4. 心に残る空想の世界の構築
+●ヒーリングを軸にしたホームページは、人の心を動かし、集客と信頼の両立を叶えます。
+ぜひ、ご一緒に心温まるWeb空間を作りましょう。
+        </p>
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
