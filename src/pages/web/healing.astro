@@ -1,64 +1,153 @@
 ---
 import Header from "../../components/header.astro";
 import Footer from "../../components/footer.astro";
-import "../../styles/style.css";
+// 以前提案した新しいデザインのCSSを読み込みます
+import "../../styles/redesign.css"; 
+
+// ===== ここに40個の音楽データを手動で追加していきます =====
+// imageUrl: 画像ファイルのパス
+// audioUrl: 音声ファイルのパス
+// title: 表示されるタイトル
+const healingItems = [
+  {
+    title: "みどりの森",
+    imageUrl: "/images/healing/midorityank.jpg",
+    audioUrl: "/images/healing/midoria.mp3",
+  },
+  {
+    title: "白いドレスの女性",
+    imageUrl: "/healing_sounds/2.白いドレスの女性/image.jpg", 
+    audioUrl: "/images/healing/audio.mp3",
+  },
+  {
+    title: "仙人",
+    imageUrl: "/healing_sounds/3.仙人/image.jpg", 
+    audioUrl: "/healing_sounds/3.仙人/audio.mp3", 
+  },
+  {
+    title: "赤い靴",
+    imageUrl: "/healing_sounds/4.赤い靴/image.jpg",
+    audioUrl: "/healing_sounds/4.赤い靴/audio.mp3", 
+  },
+];
 ---
 
 <!doctype html>
 <html lang="ja">
-	<head>
-		<meta charset="UTF-8" />
-		<title>ヒーリング素材ギャラリー</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<style>
-			.healing-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-				gap: 1.5rem;
-				max-width: 1100px;
-				margin: 2rem auto;
-				padding: 0 1rem;
-			}
-			.healing-item {
-				background: #fff;
-				border-radius: 12px;
-				box-shadow: 0 4px 16px rgba(0,0,0,.08);
-				overflow: hidden;
-				text-align: center;
-				transition: box-shadow .2s;
-			}
-			.healing-item:hover {
-				box-shadow: 0 8px 32px rgba(0,0,0,.16);
-			}
-			.healing-img {
-				width: 100%;
-				max-width: 1000px;
-				height: 200px;
-				object-fit: cover;
-				background: #eee;
-				cursor: pointer;
-				display: block;
-			}
-			.healing-label {
-				padding: .7rem 0 .9rem;
-				font-size: 1.05rem;
-				color: #444;
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1 style="text-align:center;margin-top:2rem;">ヒーリング素材ギャラリー</h1>
-			<div class="healing-grid">
-				{Array.from({length: 40}).map((_, i) => (
-					<a href="/images/healing/midoria.mp3" class="healing-item" target="_blank" rel="noopener">
-						<img src="/images/healing/midorityank.jpg" alt={`ヒーリング画像${i+1}`} class="healing-img" width="1000" height="500" loading="lazy" />
-						<div class="healing-label">ヒーリング画像{i+1}</div>
-					</a>
-				))}
-			</div>
-		</main>
-		<Footer />
-	</body>
+<head>
+    <meta charset="UTF-8" />
+    <title>ヒーリング素材ギャラリー｜プレス沖縄</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        /* このページ専用のスタイル */
+        .healing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .healing-item {
+            background: var(--white-color);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(0,0,0,.08);
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .healing-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        .healing-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .healing-label {
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .audio-player-container {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white-color);
+            padding: 1rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,.1);
+            z-index: 1000;
+            border-top: 1px solid #eee;
+        }
+        #now-playing {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        #main-audio-player {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <Header />
+    <main class="container">
+        <h1>ヒーリング音楽ギャラリー</h1>
+        <p style="text-align: center; margin-bottom: 2rem;">気になる画像をクリックすると、ページ下部のプレイヤーで音楽が再生されます。</p>
+
+        <div class="healing-grid">
+            <!-- 上のリスト(healingItems)から自動でアイテムを生成します -->
+            {healingItems.map(item => (
+                <div class="healing-item" data-audio-src={item.audioUrl} data-title={item.title}>
+                    <img src={item.imageUrl} alt={item.title} class="healing-img" loading="lazy" />
+                    <div class="healing-label">{item.title}</div>
+                </div>
+            ))}
+        </div>
+    </main>
+
+    <!-- ページ下部に固定表示されるオーディオプレイヤー -->
+    <div class="audio-player-container">
+        <div id="now-playing">曲を選択してください</div>
+        <audio id="main-audio-player" controls></audio>
+    </div>
+
+    <Footer />
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const player = document.getElementById('main-audio-player');
+            const nowPlayingEl = document.getElementById('now-playing');
+            const items = document.querySelectorAll('.healing-item');
+
+            if (!player || !nowPlayingEl) return;
+
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    const audioSrc = (item as HTMLElement).dataset.audioSrc;
+                    const title = (item as HTMLElement).dataset.title;
+
+                    if (audioSrc) {
+                        // 選択された曲をプレイヤーにセットして再生
+                        (player as HTMLAudioElement).src = audioSrc;
+                        (player as HTMLAudioElement).play();
+                        
+                        // 再生中の曲名を更新
+                        nowPlayingEl.textContent = `再生中: ${title}`;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
 </html>
