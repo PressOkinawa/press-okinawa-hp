@@ -3,6 +3,7 @@ import Header from "../../components/header.astro";
 import Footer from "../../components/footer.astro";
 // 以前提案した新しいデザインのCSSを読み込みます
 import "../../styles/redesign.css"; 
+import { toCodes } from "astro:i18n";
 
 // ===== ここに40個の音楽データを手動で追加していきます =====
 // imageUrl: 画像ファイルのパス
@@ -126,29 +127,74 @@ const healingItems = [
     audioUrl: "/images/healing/haizyoa.mp3",
   },
           {
-    title: "",
+    title: "大海原",
+    imageUrl: "/images/healing/oounabarat.jpg",
+    audioUrl: "/images/healing/oounabaraa.mp3",
+  },
+          {
+    title: "誹謗中傷",
     imageUrl: "/images/healing/sennink.jpg",
     audioUrl: "/images/healing/sennina.mp3",
   },
           {
-    title: "",
-    imageUrl: "/images/healing/sennink.jpg",
-    audioUrl: "/images/healing/sennina.mp3",
+    title: "誹謗中傷",
+    imageUrl: "/images/healing/hihout.jpg",
+    audioUrl: "/images/healing/hiboua.mp3",
   },
           {
-    title: "",
-    imageUrl: "/images/healing/sennink.jpg",
-    audioUrl: "/images/healing/sennina.mp3",
+    title: "物忘れ",
+    imageUrl: "/images/healing/monot.jpg",
+    audioUrl: "/images/healing/monoa.mp3",
   },
           {
-    title: "",
-    imageUrl: "/images/healing/sennink.jpg",
-    audioUrl: "/images/healing/sennina.mp3",
+    title: "魔法の島",
+    imageUrl: "/images/healing/mahout.jpg",
+    audioUrl: "/images/healing/mahoua.mp3",
   },
-          {
-    title: "",
-    imageUrl: "/images/healing/sennink.jpg",
-    audioUrl: "/images/healing/sennina.mp3",
+            {
+    title: "砂浜",
+    imageUrl: "/images/healing/sunahamat.jpg",
+    audioUrl: "/images/healing/sunahamaa.mp3",
+  },
+            {
+    title: "気ままな独り暮らし",
+    imageUrl: "/images/healing/kimamat.jpg",
+    audioUrl: "/images/healing/kimamaa.mp3",
+  },
+            {
+    title: "地形の変わる無人島",
+    imageUrl: "/images/healing/tikeit.jpg",
+    audioUrl: "/images/healing/tikeia.mp3",
+  },
+            {
+    title: "帆を上げて",
+    imageUrl: "/images/healing/howot.jpg",
+    audioUrl: "/images/healing/howoa.mp3",
+  },
+            {
+    title: "ゆんたく2",
+    imageUrl: "/images/healing/yun2t.jpg",
+    audioUrl: "/images/healing/yun2a.mp3",
+  },
+            {
+    title: "恋の回数",
+    imageUrl: "/images/healing/koit.jpg",
+    audioUrl: "/images/healing/koia.mp3",
+  },
+            {
+    title: "恋の回数",
+    imageUrl: "/images/healing/koit.jpg",
+    audioUrl: "/images/healing/koia.mp3",
+  },
+            {
+    title: "恋の回数",
+    imageUrl: "/images/healing/koit.jpg",
+    audioUrl: "/images/healing/koia.mp3",
+  },
+            {
+    title: "恋の回数",
+    imageUrl: "/images/healing/koit.jpg",
+    audioUrl: "/images/healing/koia.mp3",
   },
   
 
