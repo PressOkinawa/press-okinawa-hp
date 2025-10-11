@@ -49,11 +49,70 @@ import "../../styles/style.css";
         padding: 2rem 1.4rem;
         box-shadow: var(--shadow-sm);
         border-left: 6px solid var(--brand-blue);
+        margin-bottom: 1.5rem;
       }
 
       .copy-card p {
         margin: 0;
         white-space: pre-line;
+        font-size: 1.05rem;
+      }
+
+      /* ボタンのレスポンシブ調整 */
+      .healing-link-btn {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+        padding: 1rem 0.5rem;
+        text-align: center;
+      }
+
+      /* 画像・音声のレスポンシブ */
+      #random-gif,
+      #healing-image {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        display: block;
+        margin: 0 auto 1rem auto;
+      }
+      #healing-audio {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto 1rem auto;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+
+      /* スマホ対応 */
+      @media (max-width: 600px) {
+        main {
+          padding: 0 0.2rem 2rem;
+        }
+        .copy-card {
+          padding: 1.2rem 0.5rem;
+          border-radius: 10px;
+        }
+        h2 {
+          font-size: 1.1rem;
+        }
+        .copy-card p {
+          font-size: 0.98rem;
+        }
+        .healing-link-btn {
+          font-size: 1rem;
+          padding: 0.8rem 0.2rem;
+        }
+        #random-gif,
+        #healing-image,
+        #healing-audio {
+          max-width: 98vw;
+        }
       }
     </style>
   </head>
@@ -158,6 +217,11 @@ import "../../styles/style.css";
             style="display:inline-block;padding:1rem 2.2rem;font-size:1.15rem;font-weight:700;border-radius:999px;background:linear-gradient(90deg,#0077ff,#00d4ff);color:#fff;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.10);transition:box-shadow .2s;"
             >▶ ヒーリング素材ギャラリーを見る</a
           >
+          <a
+            href="/web/healing_GIF"
+            class="healing-link-btn"
+            style="display:inline-block;margin-left:1rem;padding:1rem 2.2rem;font-size:1.15rem;font-weight:700;border-radius:999px;background:linear-gradient(90deg,#ff7e5f,#feb47b);color:#fff;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.10);transition:box-shadow .2s;"
+            >▶ ヒーリングGIFギャラリーを見る</a>
         </div>
       </section>
 
