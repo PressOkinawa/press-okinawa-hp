@@ -182,6 +182,21 @@ a:hover { text-decoration: underline; color: var(--primary-color); }
   bottom: 20px;
   right: 20px;
   z-index: 999;
+  /* Instagram-like gradient for visibility */
+  background: linear-gradient(45deg, #f58529 0%, #dd2a7b 35%, #515bd4 100%);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  transition: transform 0.3s ease, background-position 0.6s ease;
+  background-size: 200% 200%;
+}
+
+.fixed-button:hover {
+  background-position: right center;
+  transform: scale(1.04);
 }
 
 
