@@ -23,12 +23,17 @@ import "../styles/style.css";
         <Header />
         <main>
             <section class="brand-intro">
-                <section class="hero">
-                    <img
-                        id="slideshow-top"
-                        alt="トップ画像"
-                        class="responsive-img"
-                    />
+                <section class="latest-work">
+                    <h2 class="latest-work-title">最新の実績です</h2>
+                    <div class="instagram-embed-wrapper">
+                        <blockquote
+                            class="instagram-media"
+                            data-instgrm-captioned
+                            data-instgrm-permalink="https://www.instagram.com/reel/DW2tSDXjdbb/"
+                            data-instgrm-version="14"
+                            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px auto; max-width:540px; min-width:326px; padding:0; width:calc(100% - 2px);">
+                        </blockquote>
+                    </div>
                 </section>
 
                             <!-- 公式Instagramの紹介セクション -->
@@ -220,6 +225,36 @@ import "../styles/style.css";
                 .adobe-button:hover {
                     transform: translateY(-2px);
                     transition: transform .12s ease-out;
+                }
+            </style>
+
+            <style>
+                .latest-work {
+                    text-align: center;
+                    margin: 0 0 1rem;
+                    padding: 0;
+                }
+                .latest-work-title {
+                    font-size: 1.4rem;
+                    margin-bottom: 0.8rem;
+                    color: #333;
+                    font-weight: 700;
+                }
+                .instagram-embed-wrapper {
+                    max-width: 540px;
+                    margin: 0 auto;
+                }
+                @media screen and (max-width: 768px) {
+                    .latest-work {
+                        margin: 0 0 0.5rem;
+                    }
+                    .latest-work-title {
+                        font-size: 1.2rem;
+                        margin-bottom: 0.5rem;
+                    }
+                    .instagram-embed-wrapper {
+                        max-width: 100%;
+                    }
                 }
             </style>
 
@@ -432,5 +467,6 @@ import "../styles/style.css";
                     .forEach((el) => observer.observe(el));
             });
         </script>
-    </body>
-</html>
+
+        <!-- Instagram埋め込みスクリプト -->
+        <script async src="https://www.instagram.com/embed.js"></script>

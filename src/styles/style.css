@@ -64,6 +64,11 @@
   text-align: center;
   border-bottom: 4px solid #0d47a1;
 }
+@media screen and (max-width: 768px) {
+  .brand-intro {
+    padding: 1rem 0.5rem;
+  }
+}
 
 .brand-content {
   max-width: 800px;
