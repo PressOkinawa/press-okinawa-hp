@@ -34,6 +34,18 @@ import "../styles/style.css";
                             style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px auto; max-width:540px; min-width:326px; padding:0; width:calc(100% - 2px);">
                         </blockquote>
                     </div>
+                    <div class="instagram-embed-wrapper">
+                        <blockquote
+                            class="instagram-media"
+                            data-instgrm-captioned
+                            data-instgrm-permalink="https://www.instagram.com/reel/DXBeAW3jRhg/"
+                            data-instgrm-version="14"
+                            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px auto; max-width:540px; min-width:326px; padding:0; width:calc(100% - 2px);">
+                        </blockquote>
+                    </div>
+                    <div class="cd-showcase">
+                        <img src="/cd01.jpg" alt="CDジャケット制作実績" class="cd-image" />
+                    </div>
                 </section>
 
                             <!-- 公式Instagramの紹介セクション -->
@@ -244,6 +256,26 @@ import "../styles/style.css";
                     max-width: 540px;
                     margin: 0 auto;
                 }
+                .cd-showcase {
+                    max-width: 540px;
+                    margin: 0 auto 1.5rem;
+                }
+                .cd-image {
+                    width: 100%;
+                    max-width: 400px;
+                    border-radius: 12px;
+                    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+                    transition: transform 0.3s ease;
+                }
+                .cd-image:hover {
+                    transform: scale(1.02);
+                }
+                .cd-caption {
+                    margin-top: 0.6rem;
+                    font-size: 1rem;
+                    color: #555;
+                    font-weight: 600;
+                }
                 @media screen and (max-width: 768px) {
                     .latest-work {
                         margin: 0 0 0.5rem;
@@ -255,6 +287,13 @@ import "../styles/style.css";
                     .instagram-embed-wrapper {
                         max-width: 100%;
                     }
+                    .cd-showcase {
+                        margin: 0 auto 1rem;
+                    }
+                    .cd-image {
+                        max-width: 80%;
+                    }
+                }
                 }
             </style>
 
