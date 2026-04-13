@@ -1,0 +1,98 @@
+---
+import Header from "../../components/header.astro";
+import Footer from "../../components/footer.astro";
+import "../../styles/style.css";
+
+const TITLE = "プレス沖縄｜映像";
+const DESC = "プレス沖縄の映像制作実績。CDジャケット・PR動画・コマーシャルなど、最新の実績をご覧ください。";
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{TITLE}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={DESC} />
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <section class="latest-work">
+        <div class="instagram-embed-wrapper">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-captioned
+            data-instgrm-permalink="https://www.instagram.com/reel/DW2tSDXjdbb/"
+            data-instgrm-version="14"
+            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px auto; max-width:540px; min-width:326px; padding:0; width:calc(100% - 2px);">
+          </blockquote>
+        </div>
+        <div class="instagram-embed-wrapper">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-captioned
+            data-instgrm-permalink="https://www.instagram.com/reel/DXBeAW3jRhg/"
+            data-instgrm-version="14"
+            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px auto; max-width:540px; min-width:326px; padding:0; width:calc(100% - 2px);">
+          </blockquote>
+        </div>
+        <div class="cd-showcase">
+          <img src="/cd01.jpg" alt="CDジャケット制作実績" class="cd-image" />
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+
+    <script async src="https://www.instagram.com/embed.js"></script>
+
+    <style>
+      .latest-work {
+        text-align: center;
+        padding: 2rem 1rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .latest-work-title {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+        color: #333;
+        font-weight: 700;
+      }
+      .instagram-embed-wrapper {
+        max-width: 540px;
+        margin: 0 auto 1.5rem;
+      }
+      .cd-showcase {
+        max-width: 540px;
+        margin: 1.5rem auto;
+      }
+      .cd-image {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease;
+      }
+      .cd-image:hover {
+        transform: scale(1.02);
+      }
+      @media screen and (max-width: 768px) {
+        .latest-work {
+          padding: 1rem 0.5rem;
+        }
+        .latest-work-title {
+          font-size: 1.2rem;
+        }
+        .instagram-embed-wrapper {
+          max-width: 100%;
+        }
+        .cd-image {
+          max-width: 80%;
+        }
+      }
+    </style>
+  </body>
+</html>
