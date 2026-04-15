@@ -25,6 +25,14 @@ import "../styles/style.css";
             <section class="brand-intro">
                 <section class="latest-work">
                     <h2 class="latest-work-title">最新の実績です</h2>
+                    <div class="site-showcase">
+                        <a href="https://www.sunabeclinic.com/" target="_blank" rel="noopener noreferrer" class="site-showcase-card">
+                            <div class="site-showcase-badge">WEBSITE</div>
+                            <p class="site-showcase-name">砂辺クリニック 様</p>
+                            <p class="site-showcase-url">www.sunabeclinic.com</p>
+                            <span class="site-showcase-btn">サイトを見る →</span>
+                        </a>
+                    </div>
                     <div class="instagram-embed-wrapper">
                         <blockquote
                             class="instagram-media"
@@ -344,6 +352,65 @@ import "../styles/style.css";
                         max-width: 80%;
                     }
                 }
+                }
+
+                .site-showcase {
+                    max-width: 540px;
+                    margin: 0 auto 1.5rem;
+                }
+                .site-showcase-card {
+                    display: block;
+                    background: linear-gradient(135deg, #0d47a1, #1976d2);
+                    color: #fff;
+                    border-radius: 14px;
+                    padding: 2rem 1.5rem;
+                    text-decoration: none;
+                    box-shadow: 0 10px 30px rgba(13, 71, 161, 0.3);
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                .site-showcase-card:hover {
+                    transform: translateY(-4px);
+                    box-shadow: 0 14px 40px rgba(13, 71, 161, 0.4);
+                }
+                .site-showcase-badge {
+                    display: inline-block;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.3rem 0.8rem;
+                    border-radius: 20px;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    letter-spacing: 0.1em;
+                    margin-bottom: 0.8rem;
+                }
+                .site-showcase-name {
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                    margin: 0 0 0.4rem;
+                }
+                .site-showcase-url {
+                    font-size: 0.9rem;
+                    opacity: 0.8;
+                    margin: 0 0 1rem;
+                }
+                .site-showcase-btn {
+                    display: inline-block;
+                    background: #fff;
+                    color: #0d47a1;
+                    padding: 0.5rem 1.5rem;
+                    border-radius: 8px;
+                    font-weight: 700;
+                    font-size: 0.95rem;
+                }
+                @media screen and (max-width: 768px) {
+                    .site-showcase {
+                        max-width: 100%;
+                    }
+                    .site-showcase-card {
+                        padding: 1.5rem 1rem;
+                    }
+                    .site-showcase-name {
+                        font-size: 1.2rem;
+                    }
                 }
             </style>
 
