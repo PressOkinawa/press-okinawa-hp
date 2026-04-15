@@ -21,15 +21,20 @@ const DESC = "プレス沖縄のホームページ制作実績。最新の制作
     <main>
       <section class="hp-works">
         <h2 class="hp-works-title">最新の実績です</h2>
-        <div class="instagram-embed-wrapper">
-          <blockquote
-            class="instagram-media"
-            data-instgrm-captioned
-            data-instgrm-permalink="https://www.instagram.com/reel/DXI5DDADdY_/"
-            data-instgrm-version="14"
-            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px auto; max-width:540px; min-width:326px; padding:0; width:calc(100% - 2px);">
-          </blockquote>
-        </div>
+        <a href="https://www.instagram.com/reel/DXI5DDADdY_/" target="_blank" rel="noopener noreferrer" class="work-card">
+          <div class="work-card-body work-card-body--text-only">
+            <p class="work-card-caption">
+              プレス沖縄です。<br />
+              砂辺クリニック様のホームページ制作を担当<br />
+              運用1年でLINE友だち6,300人達成！<br />
+              予約の約7割がLINE経由に<br />
+              さらに、モデル事務所も運営しているため<br />
+              オリジナル素材も提供可能。著作権も安心です。<br />
+              初期費用１０万円・毎月の更新料５千円で契約しました。
+            </p>
+            <span class="work-card-link">▶ Instagramで見る</span>
+          </div>
+        </a>
 
         <div class="site-showcase">
           <h3 class="site-showcase-label">制作実績</h3>
@@ -45,33 +50,71 @@ const DESC = "プレス沖縄のホームページ制作実績。最新の制作
 
     <Footer />
 
-    <script async src="https://www.instagram.com/embed.js"></script>
-
     <style>
       .hp-works {
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
         padding: 2rem 1rem;
         max-width: 800px;
         margin: 0 auto;
       }
       .hp-works-title {
         font-size: 1.6rem;
-        margin-bottom: 1.2rem;
+        margin-bottom: 0.4rem;
         color: #333;
         font-weight: 700;
       }
-      .instagram-embed-wrapper {
-        max-width: 540px;
-        margin: 0 auto 1.5rem;
+      .work-card {
+        display: block;
+        width: 100%;
+        max-width: 500px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+        overflow: hidden;
+        text-decoration: none;
+        color: #333;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+      .work-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 28px rgba(0,0,0,0.16);
+      }
+      .work-card-body {
+        padding: 1rem 1.2rem 1.2rem;
+        text-align: left;
+      }
+      .work-card-caption {
+        font-size: 0.92rem;
+        line-height: 1.7;
+        margin: 0 0 0.8rem;
+        color: #333;
+      }
+      .work-card-link {
+        display: inline-block;
+        padding: 0.45rem 1.2rem;
+        background: linear-gradient(135deg, #E1306C, #F77737);
+        color: #fff;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+      .work-card-body--text-only {
+        padding: 1.5rem 1.4rem;
+        background: linear-gradient(135deg, #f8f8f8, #fff);
+        border-left: 4px solid #E1306C;
       }
       @media screen and (max-width: 768px) {
         .hp-works {
           padding: 1rem 0.5rem;
+          gap: 0.8rem;
         }
         .hp-works-title {
           font-size: 1.2rem;
         }
-        .instagram-embed-wrapper {
+        .work-card {
           max-width: 100%;
         }
       }
