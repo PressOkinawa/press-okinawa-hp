@@ -53,17 +53,9 @@ import "../styles/style.css";
                     </div>
                     <div class="work-gif-preview">
                         <a href="https://www.instagram.com/reel/DW2tSDXjdbb/" target="_blank" rel="noopener noreferrer">
-                            <img src="/yosihimoriGIF.gif" alt="Yoshimori映像制作" class="work-gif" />
+                            <img src="/yoshimori.gif" alt="Yoshimori映像制作" class="work-gif" />
+                            <span class="gif-insta-link">▶ Instagramで見る</span>
                         </a>
-                    </div>
-                    <div class="instagram-embed-wrapper">
-                        <blockquote
-                            class="instagram-media"
-                            data-instgrm-captioned
-                            data-instgrm-permalink="https://www.instagram.com/reel/DW2tSDXjdbb/"
-                            data-instgrm-version="14"
-                            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px auto; max-width:540px; min-width:326px; padding:0; width:calc(100% - 2px);">
-                        </blockquote>
                     </div>
                     <div class="work-gif-preview">
                         <a href="https://www.instagram.com/reel/DXBeAW3jRhg/" target="_blank" rel="noopener noreferrer">
@@ -309,6 +301,24 @@ import "../styles/style.css";
                     width: 100%;
                     border-radius: 10px;
                     box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+                }
+                .gif-insta-link {
+                    display: inline-block;
+                    margin-top: 0.6rem;
+                    padding: 0.45rem 1.2rem;
+                    background: linear-gradient(135deg, #E1306C, #F77737);
+                    color: #fff;
+                    border-radius: 8px;
+                    font-size: 0.9rem;
+                    font-weight: 700;
+                    text-decoration: none;
+                    transition: opacity 0.2s;
+                }
+                .work-gif-preview a {
+                    text-decoration: none;
+                }
+                .work-gif-preview a:hover .gif-insta-link {
+                    opacity: 0.85;
                 }
                 .cd-showcase {
                     max-width: 540px;
